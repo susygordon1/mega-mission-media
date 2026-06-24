@@ -23,6 +23,9 @@
 *{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
 body{font-family:"DM Sans",sans-serif;background:var(--black);color:var(--white);overflow-x:hidden;}
+.container{max-width:1200px;margin:0 auto;padding:0 3rem;}
+@media(max-width:900px){.container{padding:0 2rem;}}
+@media(max-width:600px){.container{padding:0 1.2rem;}}
 
 /* ── TICKER ── */
 .mmm-ticker{background:var(--gold);height:34px;display:flex;align-items:center;overflow:hidden;position:fixed;top:0;left:0;right:0;z-index:200;}
@@ -33,7 +36,8 @@ body{font-family:"DM Sans",sans-serif;background:var(--black);color:var(--white)
 @keyframes ticker{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 
 /* ── NAV ── */
-.mmm-nav{position:fixed;top:34px;left:0;right:0;z-index:100;background:#000;border-bottom:2px solid var(--line-brand);padding:0 2.5rem;height:68px;display:flex;align-items:center;justify-content:space-between;}
+.mmm-nav{position:fixed;top:34px;left:0;right:0;z-index:100;background:#000;border-bottom:2px solid var(--line-brand);height:68px;}
+.mmm-nav-inner{max-width:1200px;margin:0 auto;padding:0 2.5rem;height:100%;display:flex;align-items:center;justify-content:space-between;}
 .mmm-nav-brand{display:flex;align-items:center;gap:14px;}
 .mmm-nav-brand img{height:52px;width:auto;display:block;}
 .mmm-nav-right{display:flex;align-items:center;}
@@ -53,7 +57,7 @@ body{font-family:"DM Sans",sans-serif;background:var(--black);color:var(--white)
 .hero{position:relative;min-height:600px;overflow:hidden;background:#000;}
 .hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;display:block;filter:brightness(0.9) contrast(1.05);z-index:0;}
 .hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(to right,rgba(0,0,0,0.97) 0%,rgba(0,0,0,0.92) 28%,rgba(0,0,0,0.70) 45%,rgba(0,0,0,0.25) 65%,rgba(0,0,0,0.08) 82%,rgba(0,0,0,0) 100%);}
-.hero-left{position:relative;z-index:2;padding:80px 3rem 80px 3rem;display:flex;flex-direction:column;justify-content:center;max-width:520px;}
+.hero-left{position:relative;z-index:2;padding:80px 3rem 80px 3rem;display:flex;flex-direction:column;justify-content:center;max-width:560px;}
 .hero-logo-img{width:100%;max-width:380px;display:block;filter:drop-shadow(0 0 50px rgba(240,180,41,0.40)) drop-shadow(0 0 20px rgba(240,180,41,0.20));margin-bottom:20px;}
 .hero-vm{font-family:"Bebas Neue",sans-serif;font-size:2.6rem;letter-spacing:0.06em;color:var(--white);line-height:1.05;margin-bottom:10px;}
 .hero-vm .gold{color:var(--gold);}
@@ -68,26 +72,24 @@ body{font-family:"DM Sans",sans-serif;background:var(--black);color:var(--white)
 
 /* ── SECTION BASE ── */
 .section{padding:64px 3rem;background:var(--black);}
+.section-inner{max-width:1200px;margin:0 auto;}
 .section-label{font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
 .section-title{font-family:"Bebas Neue",sans-serif;font-size:2.6rem;letter-spacing:0.06em;color:var(--white);margin-bottom:36px;}
 
 /* ── SERVICES ── */
-.services-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:rgba(255,255,255,0.15);}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:rgba(255,255,255,0.15);}
+.svc-coming{opacity:0.6;}
+.svc-badge{display:inline-block;margin-top:12px;font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;padding:4px 10px;border:1px solid rgba(240,180,41,0.4);color:var(--gold);}
 .svc{background:var(--black-mid);padding:30px 22px;transition:background 0.2s;}
 .svc:hover{background:var(--black-lt);}
 .svc-icon{font-size:22px;color:var(--gold);margin-bottom:14px;}
 .svc-name{font-family:"Bebas Neue",sans-serif;font-size:1.1rem;letter-spacing:0.1em;color:var(--white);margin-bottom:10px;}
 .svc-desc{font-size:0.78rem;line-height:1.7;color:var(--muted);}
 
-/* ── PROCESS ── */
-.process-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:28px;}
-.pstep{border-left:2px solid var(--gold);padding-left:20px;}
-.pnum{font-family:"Bebas Neue",sans-serif;font-size:3rem;color:rgba(240,180,41,0.12);line-height:1;margin-bottom:6px;}
-.ptitle{font-family:"Bebas Neue",sans-serif;font-size:1.1rem;letter-spacing:0.12em;color:var(--white);margin-bottom:6px;}
-.pdesc{font-size:0.75rem;line-height:1.65;color:var(--muted);}
+
 
 /* ── ABOUT DARK BAND ── */
-.about-band{background:var(--black-mid);padding:72px 3rem;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+.about-band{background:var(--black-mid);padding:72px 3rem;}.about-band-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
 .about-eyebrow{font-size:0.58rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
 .about-title{font-family:"Playfair Display",serif;font-size:2.2rem;line-height:1.2;color:var(--white);margin-bottom:24px;}
 .about-title em{color:var(--gold);font-style:italic;}
@@ -99,25 +101,37 @@ body{font-family:"DM Sans",sans-serif;background:var(--black);color:var(--white)
 .astat-num{font-family:"Bebas Neue",sans-serif;font-size:3rem;color:var(--gold);line-height:1;}
 .astat-label{font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-top:4px;}
 
-/* ── FOUNDER INTERVIEWS ── */
+/* ── RIDE & SHARE ── */
 .fi-block{background:#0a0a0a;border-top:1px solid var(--line-brand);border-bottom:1px solid var(--line-brand);}
-.fi-inner{padding:64px 3rem;}
+.fi-inner{padding:64px 3rem;max-width:1200px;margin:0 auto;}
 .fi-tag{font-size:0.58rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
-.fi-title{font-family:"Bebas Neue",sans-serif;font-size:4rem;line-height:0.9;color:var(--white);letter-spacing:0.04em;margin-bottom:20px;}
-.fi-desc{font-size:0.85rem;color:rgba(255,255,255,0.6);max-width:680px;line-height:1.85;margin-bottom:36px;}
-.fi-formats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,0.1);margin-bottom:36px;}
+.fi-title{font-family:"Bebas Neue",sans-serif;font-size:4rem;line-height:0.9;color:var(--white);letter-spacing:0.04em;margin-bottom:16px;}
+.fi-desc-large{font-family:"Playfair Display",serif;font-style:italic;font-size:1.8rem;color:var(--gold);margin-bottom:16px;}
+.fi-desc{font-size:0.85rem;color:rgba(255,255,255,0.6);max-width:720px;line-height:1.85;margin-bottom:36px;}
+.fi-formats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,0.1);margin-bottom:48px;}
 .fi-fmt{background:#111;padding:28px 26px;}
 .fi-fmt-tag{font-size:0.55rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
 .fi-fmt-name{font-family:"Bebas Neue",sans-serif;font-size:1.3rem;letter-spacing:0.08em;color:var(--white);margin-bottom:10px;}
 .fi-fmt-desc{font-size:0.78rem;line-height:1.7;color:rgba(255,255,255,0.5);}
+/* Sample cards */
+.rs-samples-label{font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(240,180,41,0.6);margin-bottom:20px;}
+.rs-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,0.1);}
+.rs-card{background:#0d0d0d;text-decoration:none;display:block;transition:background 0.2s;}
+.rs-card:hover{background:#151515;}
+.rs-thumb{position:relative;overflow:hidden;aspect-ratio:16/9;}
+.rs-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.3s;}
+.rs-card:hover .rs-thumb img{transform:scale(1.04);}
+.rs-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.35);transition:background 0.2s;}
+.rs-card:hover .rs-play{background:rgba(0,0,0,0.15);}
+.rs-play i{font-size:2.2rem;color:var(--gold);opacity:0.9;}
+.rs-info{padding:16px 18px 20px;}
+.rs-name{font-family:"Bebas Neue",sans-serif;font-size:1rem;letter-spacing:0.1em;color:var(--white);margin-bottom:6px;}
+.rs-title{font-size:0.72rem;color:rgba(255,255,255,0.55);line-height:1.55;margin-bottom:8px;}
+.rs-tag{font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);opacity:0.7;}
+@media(max-width:900px){.rs-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:600px){.rs-grid{grid-template-columns:1fr;}.fi-formats{grid-template-columns:1fr;}}
 
-/* ── WORKSHOPS ── */
-.workshops-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:rgba(255,255,255,0.15);}
-.wcard{background:var(--black-mid);padding:30px 24px;transition:background 0.2s;}
-.wcard:hover{background:var(--black-lt);}
-.wcard-icon{font-size:22px;color:var(--gold);margin-bottom:14px;}
-.wcard-name{font-family:"Bebas Neue",sans-serif;font-size:1.1rem;letter-spacing:0.1em;color:var(--white);margin-bottom:10px;}
-.wcard-desc{font-size:0.78rem;line-height:1.7;color:var(--muted);}
+
 
 /* ── EVENTS ── */
 .events-list{display:flex;flex-direction:column;gap:1px;background:rgba(255,255,255,0.10);}
@@ -137,6 +151,7 @@ body{font-family:"DM Sans",sans-serif;background:var(--black);color:var(--white)
 
 /* ── CTA ── */
 .cta-block{padding:80px 3rem;text-align:center;background:var(--black-mid);}
+.cta-inner{max-width:800px;margin:0 auto;}
 .cta-title{font-family:"Bebas Neue",sans-serif;font-size:3.2rem;letter-spacing:0.06em;color:var(--white);margin-bottom:12px;}
 .cta-sub{font-size:0.82rem;color:var(--muted);margin-bottom:32px;}
 
@@ -171,11 +186,11 @@ footer{background:#080808;border-top:3px solid var(--gold);}
   .btn-row{justify-content:center;}
   .hero-sub{margin:0 auto 32px;}
   .services-grid{grid-template-columns:1fr 1fr;}
-  .about-band{grid-template-columns:1fr;}
+  .about-band-inner{grid-template-columns:1fr;}
   .footer-main{grid-template-columns:1fr;}
 }
 @media(max-width:600px){
-  .mmm-nav{padding:0 1.2rem;}
+  .mmm-nav-inner{padding:0 1.2rem;}
   .section{padding:48px 1.4rem;}
   .hero{padding:48px 1.4rem 64px;}
   .hero-title{font-size:3.8rem;}
@@ -210,6 +225,7 @@ footer{background:#080808;border-top:3px solid var(--gold);}
 
 <!-- NAV -->
 <nav class="mmm-nav">
+  <div class="mmm-nav-inner">
   <div class="mmm-nav-brand">
     <img src="data:image/webp;base64,UklGRn4EAABXRUJQVlA4IHIEAABQFQCdASo8ADQAPlEejESjoaEXDJXEOAUEsgBm0tX+1wENsB5gOgf+qvrAfwDrTfQA8tz2Tv8J/yPSwpXz4rLNfZL9lwg+5LIj/nMed/l+MDuSP8txn0d/ny/SXnZ+iv/D7hH6s/8Przeij+xSKGu97SY+bZzvIjUAlIKHRW9XfypCkrktTATv0XlI9HY5QR/pBXsiOIq7HM/epvcOpR+vJC0c5SMS032dseyLqIM/qkP+AAD+/9iEQvxlb3zQexhy5svnIj8OcTLgYqRwOd5pb0UfFzt/8//ofxk7tZt+dP5fj/kkIjXoWUgPtmYOMLuYzan8ssGfLjXOkCjdi6wIF/AAcUX05oBl5T5Sv/6H/fjE7Z9LNtZcT2/fS9p5G3UeYUHw+8TBjBNGMTWQLzlTh3n/hfrz/otC11N8NzwtP+BJ5q1/2SnJ+CDjTfPjxj4fYaRH4mWe656z1fkN7WMxBOEjZ8wo3MynwEM8P9Wg84UinAAjezsqF/kTI0G1uoEDDif6bs7mr/wfzyEf1iDonmPVZTkPLL+MmRTC9XKJpH/0pxEBxADPRYwiFP/3KOFTzZkd1sgT22yJdy3BTmhg6LxAPNBDddWSo/N2QEwnnsfX4qF3RB2ReI/PfQpiRfmu4Img5aHPdU24lsjbHG3J7m7bsxbCm740sHHz8K4UKSRhCHNpNPTniY/wJY34UjErO9MFiyJetBCrZE8f38FEY/QHzJmiQOD/fQXQXgtGASRsJmzXd7R9P/iGGJrBng3LrzX/t8fcnn/F4xsTe3/+nWyyF3Tq8EqiK813mXZ87Wt5na76228IXhY2rNRHSpWN+TH3lwkmJq2rKsuUSmtdgOh9Vw+f8GrhnWeEM7j/i3Clhf7qpRH4zFofQ/Lffe0pt/HHscAup3sz/QrJGjTmI04UFCnOUbHenbncLMHDOY1h0L7Z90GLvoydjmanrTgfFgwH2vMeKyAltU8PhY32JdQgvErlVPsXF46valUdEmgRgRKfa6At0EbPZ+wDAGrz7P+Eu0btNOzHMAMFRtrFATUPQkJpDW1es0nv50NP0rf97dkMplfMtU95Eq5Cu78B12Lss3WijhgX2vXvpWlbKHnAMUgoCpkCa9/NJ9ADkFR2WdYDcNUxO5ObmPJSnn02sa8cfjYpAn7SeTfZ/Wp8pgwv3sz98bbv9v0Ea6+URSjbrcXgoKAfz3DZd2wLxd6ujPo9cVflGszMWCl627jqVYv8cIHv0/VAFf0eR2fckNqw8tAqgQVukoWCNGyarJ2TQPGmJ70JLibat3vzxbYW6FOsoUJq6j/iN2zQMZTSiEYnLd46I/RUwZ7N5k8dh2+A9obOn4z5LNN4aCzsTaq1Xj1kC5d4N+J9i2mQ1psV/pkpapvHhakHwOyPUln8al55XFTnlag6H99x11oE+0L3kXBDE6w3oB2sKBM6jpNdqiAUVjfHDjIXuRKmxiTX2bMxNosY43pcMSLjqIPo5EC/Bh1qBgpuHOGt1aM4AZywAAAA" alt="Mega Mission Media">
   </div>
@@ -218,9 +234,11 @@ footer{background:#080808;border-top:3px solid var(--gold);}
       <li><a href="#">Home</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#services">Services</a></li>
+      <li><a href="#rideshare">Ride &amp; Share</a></li>
       <li><a href="#events">Events</a></li>
     </ul>
     <a href="tel:8178608989" class="mmm-nav-cta">Call for Consultation &nbsp;·&nbsp; 817-860-8989</a>
+  </div>
   </div>
 </nav>
 
@@ -250,6 +268,7 @@ footer{background:#080808;border-top:3px solid var(--gold);}
 
 <!-- ABOUT -->
 <section class="about-band" id="about">
+  <div class="about-band-inner">
   <div>
     <div class="about-eyebrow">Mega Mission Media — Who We Are &amp; What We Do</div>
     <div class="about-title">We are a <em>creative media</em> and production company.</div>
@@ -272,12 +291,14 @@ footer{background:#080808;border-top:3px solid var(--gold);}
       <div class="astat-label">Built in obedience. Born to serve. Philippians 1:6</div>
     </div>
   </div>
+  </div>
 </section>
 
 <hr class="body-divider">
 
 <!-- SERVICES -->
 <section class="section" id="services">
+  <div style="max-width:1200px;margin:0 auto;">
   <div class="section-label">What I Do</div>
   <div class="section-title">Services</div>
   <div class="services-grid">
@@ -306,87 +327,108 @@ footer{background:#080808;border-top:3px solid var(--gold);}
       <div class="svc-name">Automations &amp; Back Office</div>
       <div class="svc-desc">Business automations, Google Workspace, project management, and workflows — assessed and built so your business runs after hours.</div>
     </div>
+    <div class="svc">
+      <div class="svc-icon"><i class="ti ti-car"></i></div>
+      <div class="svc-name">Ride &amp; Share Interview</div>
+      <div class="svc-desc">The front seat is for sale. In-car or virtual — a professional video interview asset you own and can share everywhere.</div>
+    </div>
+    <div class="svc svc-coming">
+      <div class="svc-icon"><i class="ti ti-speakerphone"></i></div>
+      <div class="svc-name">Expert Speaker Nights</div>
+      <div class="svc-desc">Networking events and knowledge-sharing workshops with real experts in the room. Coming soon to Fort Worth.</div>
+      <div class="svc-badge">Coming Soon</div>
+    </div>
+  </div>
   </div>
 </section>
 
 <hr class="body-divider">
 
-<!-- FOUNDER INTERVIEWS -->
-<div class="fi-block">
+<!-- RIDE & SHARE -->
+<div class="fi-block" id="rideshare">
   <div class="fi-inner">
-    <div class="fi-tag">Featured Service</div>
-    <div class="fi-title">FOUNDER<br>INTERVIEWS</div>
-    <div class="fi-desc">The flagship Mega Mission Media service. We sit down with founders and business leaders and capture an on-camera interview that is cinematic, professional, and fully yours. You own the video asset — use it on YouTube, your website, social, or anywhere your brand needs to show up.</div>
+    <div class="fi-tag">Purchasable Media Asset · MMM Signature Service</div>
+    <div class="fi-title">RIDE &amp; SHARE</div>
+    <div class="fi-desc-large">The front seat is for sale.</div>
+    <div class="fi-desc">Your story. My car. Your asset. Whether you're a founder, entrepreneur, professional, or ministry — if you have a story and a business to put out there, this is your seat. We capture your interview in a moving vehicle or virtually, produce it to professional broadcast quality, and hand you a video asset that is fully yours to use anywhere. MMM amplifies it on our platform too.</div>
     <div class="fi-formats">
       <div class="fi-fmt">
-        <div class="fi-fmt-tag">Format 01</div>
-        <div class="fi-fmt-name">RIDE-ALONG INTERVIEW</div>
-        <div class="fi-fmt-desc">Filmed in a moving vehicle — cinematic, authentic, and uniquely Mega Mission Media. Guards come down in the car. The real story comes out.</div>
+        <div class="fi-fmt-tag">Format 01 · In the Car</div>
+        <div class="fi-fmt-name">RIDESHARE INTERVIEW</div>
+        <div class="fi-fmt-desc">The original. Filmed in a moving vehicle — cinematic, authentic, and uniquely MMM. Guards come down in the car. The real story comes out. You own every frame.</div>
       </div>
       <div class="fi-fmt">
-        <div class="fi-fmt-tag">Format 02</div>
+        <div class="fi-fmt-tag">Format 02 · Remote</div>
         <div class="fi-fmt-name">VIRTUAL INTERVIEW</div>
-        <div class="fi-fmt-desc">Remote, studio-quality production. Same great story, same professional output — accessible from anywhere in the country.</div>
+        <div class="fi-fmt-desc">Same story. Same production quality. Accessible from anywhere in the country. Studio-quality output delivered to you as a fully branded video asset.</div>
       </div>
     </div>
-    <a href="https://susygordon.com" target="_blank" class="btn-gold">Book Your Introduction Call →</a>
+
+    <!-- SAMPLE INTERVIEWS -->
+    <div class="rs-samples-label">See What a Ride &amp; Share Interview Looks Like</div>
+    <div class="rs-grid">
+      <a href="https://youtu.be/7kancj2at4s" target="_blank" class="rs-card">
+        <div class="rs-thumb">
+          <img src="https://img.youtube.com/vi/7kancj2at4s/mqdefault.jpg" alt="Carrie Carter Interview" loading="lazy">
+          <div class="rs-play"><i class="ti ti-player-play-filled"></i></div>
+        </div>
+        <div class="rs-info">
+          <div class="rs-name">Carrie Carter</div>
+          <div class="rs-title">25 Years in Tech. Two Layoffs. One Mini Bus — Open for Business!</div>
+          <div class="rs-tag">Cowtown Tour Company · Fort Worth, TX</div>
+        </div>
+      </a>
+      <a href="https://youtu.be/3yLCLKzeSNk" target="_blank" class="rs-card">
+        <div class="rs-thumb">
+          <img src="https://img.youtube.com/vi/3yLCLKzeSNk/mqdefault.jpg" alt="Susy Gordon Interview" loading="lazy">
+          <div class="rs-play"><i class="ti ti-player-play-filled"></i></div>
+        </div>
+        <div class="rs-info">
+          <div class="rs-name">Susy Gordon</div>
+          <div class="rs-title">In Pursuit of Purpose — She Left a $155K Salary to Help the Lost Launch.</div>
+          <div class="rs-tag">Mega Mission Media · Fort Worth, TX</div>
+        </div>
+      </a>
+      <a href="https://youtu.be/nANNiY8SsfE" target="_blank" class="rs-card">
+        <div class="rs-thumb">
+          <img src="https://img.youtube.com/vi/nANNiY8SsfE/mqdefault.jpg" alt="Lena Killion Interview" loading="lazy">
+          <div class="rs-play"><i class="ti ti-player-play-filled"></i></div>
+        </div>
+        <div class="rs-info">
+          <div class="rs-name">Lena Killion</div>
+          <div class="rs-title">She Took the Power Back From the Funeral Home.</div>
+          <div class="rs-tag">MLK Pre Arrangements · Fort Worth, TX</div>
+        </div>
+      </a>
+      <a href="https://youtu.be/iUCYARj7i9U" target="_blank" class="rs-card">
+        <div class="rs-thumb">
+          <img src="https://img.youtube.com/vi/iUCYARj7i9U/mqdefault.jpg" alt="Yoel Zehaie Interview" loading="lazy">
+          <div class="rs-play"><i class="ti ti-player-play-filled"></i></div>
+        </div>
+        <div class="rs-info">
+          <div class="rs-name">Yoel Zehaie</div>
+          <div class="rs-title">Your Trusted Texas Voice in Criminal, Family &amp; Civil Law.</div>
+          <div class="rs-tag">Attorney · Dallas–Fort Worth</div>
+        </div>
+      </a>
+    </div>
+
+    <div style="margin-top:40px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+      <a href="tel:8178608989" class="btn-gold" style="font-size:1rem;padding:14px 32px;">Call for Consultation &nbsp;·&nbsp; 817-860-8989</a>
+      <span style="font-size:0.72rem;color:var(--muted);letter-spacing:0.06em;">No pricing listed. Call to claim your seat.</span>
+    </div>
   </div>
 </div>
 
-<hr class="body-divider">
 
-<!-- PROCESS -->
-<section class="section">
-  <div class="section-label">How I Work</div>
-  <div class="section-title">The Process</div>
-  <div class="process-row">
-    <div class="pstep"><div class="pnum">01</div><div class="ptitle">Assess</div><div class="pdesc">Where are you now — presence, gaps, systems, goals.</div></div>
-    <div class="pstep"><div class="pnum">02</div><div class="ptitle">Share</div><div class="pdesc">You see the full picture and a clear plan for what's next.</div></div>
-    <div class="pstep"><div class="pnum">03</div><div class="ptitle">Implement</div><div class="pdesc">Sites, content, video, systems — built to your assessment.</div></div>
-    <div class="pstep"><div class="pnum">04</div><div class="ptitle">Evolve</div><div class="pdesc">Agile by design. I move with you as your business grows.</div></div>
-  </div>
-</section>
 
-<hr class="body-divider">
 
-<!-- WORKSHOPS -->
-<section class="section">
-  <div class="section-label">Community &amp; Knowledge Transfer</div>
-  <div class="section-title">Workshops &amp; Speaker Nights</div>
-  <div style="margin-bottom:36px;">
-    <p style="font-size:0.88rem;color:var(--muted);max-width:600px;line-height:1.8;">MMM hosts live gatherings where real professionals share real knowledge — no fluff, no pitch decks. Just experts in the room doing what they do best.</p>
-  </div>
-  <div class="workshops-grid">
-    <div class="wcard">
-      <div class="wcard-icon"><i class="ti ti-microphone-2"></i></div>
-      <div class="wcard-name">Expert Speaker Nights</div>
-      <div class="wcard-desc">Attorneys, electricians, financial advisors, and more — MMM client-experts share what they know with the community.</div>
-    </div>
-    <div class="wcard">
-      <div class="wcard-icon"><i class="ti ti-users"></i></div>
-      <div class="wcard-name">Build Your Network</div>
-      <div class="wcard-desc">Curated rooms where business owners, founders, and seekers connect with purpose — not just business cards.</div>
-    </div>
-    <div class="wcard">
-      <div class="wcard-icon"><i class="ti ti-school"></i></div>
-      <div class="wcard-name">Knowledge Transfer</div>
-      <div class="wcard-desc">Hands-on workshops covering digital presence, content creation, podcasting, and back-office systems.</div>
-    </div>
-    <div class="wcard">
-      <div class="wcard-icon"><i class="ti ti-calendar-event"></i></div>
-      <div class="wcard-name">Host Your Workshop</div>
-      <div class="wcard-desc">Have expertise to share? Partner with MMM to host your own community session. Let's build something together.</div>
-    </div>
-  </div>
-  <div style="margin-top:32px;">
-    <a href="https://susygordon.com" target="_blank" class="btn-gold">Talk About Workshops →</a>
-  </div>
-</section>
 
 <hr class="body-divider">
 
 <!-- EVENTS -->
 <section class="section" id="events">
+  <div style="max-width:1200px;margin:0 auto;">
   <div class="section-label">In the Community</div>
   <div class="section-title">Events &amp; Announcements</div>
   <div class="events-list">
@@ -402,12 +444,14 @@ footer{background:#080808;border-top:3px solid var(--gold);}
     </div>
   </div>
   <p class="events-note">Want to advertise your event here? <a href="tel:8178608989">Call 817-860-8989 ↗</a></p>
+  </div>
 </section>
 
 <hr class="body-divider">
 
 <!-- CTA -->
 <div class="cta-block">
+  <div class="cta-inner">
   <div class="cta-title">Ready to Put Your Business Out There?</div>
   <div class="cta-sub">One person. Full-service. Faith-driven. Fort Worth, Texas.</div>
   <a href="https://susygordon.com" target="_blank" class="btn-gold" style="font-size:1.1rem;padding:15px 38px;">Call for Consultation &nbsp;·&nbsp; 817-860-8989</a>
