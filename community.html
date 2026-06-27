@@ -21,7 +21,7 @@
   }
 
   body {
-    background: var(--black);
+    background: #000000;
     color: var(--white);
     font-family: 'DM Sans', sans-serif;
     line-height: 1.6;
@@ -37,7 +37,8 @@
     border-bottom: 1px solid var(--border);
     position: sticky;
     top: 0;
-    background: var(--black);
+    scroll-padding-top: 0;
+    background: #000000;
     z-index: 100;
   }
   .nav-links {
@@ -374,8 +375,8 @@
 <!-- ============================================================ -->
 <!-- HDR · SHARED HEADER — NAV + CTA BUTTON                    -->
 <!-- ============================================================ -->
-<nav>
-  <a href="index.html"><img src="MMM_Logo.png" alt="Mega Mission Media" style="height: 52px; width: auto; display: block; mix-blend-mode: lighten;" /></a>
+<nav style="display:flex; align-items:center; justify-content:space-between; padding:20px 48px; border-bottom:1px solid #111; position:sticky; top:0; background:#000000; z-index:100;">
+  <a href="index.html"><img src="MMM_Logo.png" alt="Mega Mission Media" style="height:52px; width:auto; display:block; mix-blend-mode:lighten;" /></a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="services.html">Services</a></li>
