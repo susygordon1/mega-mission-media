@@ -29,48 +29,13 @@
   }
 
   /* ── NAV ── */
-  nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px 48px;
-    border-bottom: 1px solid var(--border);
-    position: sticky;
-    top: 0;
-    scroll-padding-top: 0;
-    background: #000000;
-    z-index: 100;
-  }
-  .nav-links {
-    display: flex;
-    gap: 36px;
-    list-style: none;
-  }
-  .nav-links a {
-    color: var(--gray);
-    text-decoration: none;
-    font-size: 0.85rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--gold); }
-  .nav-links a.active { color: var(--gold); }
-  .nav-cta {
-    display: inline-block;
-    border: 1px solid var(--gold);
-    color: var(--gold);
-    padding: 10px 22px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: all 0.2s;
-    white-space: nowrap;
-  }
-  .nav-cta:hover { background: var(--gold); color: var(--black); }
+  
+  
+  
+  
+  
+  
+  
 
   /* ── HERO ── */
   .hero {
@@ -361,22 +326,66 @@
   /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
     nav { padding: 16px 24px; }
-    .nav-links { display: none; }
+    
     .hero, .community-section, .join-section { padding: 60px 24px; }
     .community-grid { grid-template-columns: 1fr; }
     .join-inner { grid-template-columns: 1fr; gap: 48px; }
     .footer-network, .footer-copy { padding: 24px; }
     .card-top { height: 260px; }
   }
+  nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 48px;
+    border-bottom: 1px solid #111111;
+    position: sticky;
+    top: 0;
+    background: #000000;
+    z-index: 100;
+  }
+  .nav-links {
+    display: flex;
+    flex-direction: row;
+    gap: 36px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .nav-links a {
+    color: #aaaaaa;
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    white-space: nowrap;
+  }
+  .nav-links a:hover { color: #F0B429; }
+  .nav-links a.active { color: #F0B429; }
+  .nav-cta {
+    display: inline-block;
+    border: 1px solid #F0B429;
+    color: #F0B429;
+    padding: 10px 22px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.2s;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .nav-cta:hover { background: #F0B429; color: #000000; }
 </style>
 </head>
 <body>
 
-<!-- ============================================================ -->
-<!-- HDR · SHARED HEADER — NAV + CTA BUTTON                    -->
-<!-- ============================================================ -->
-<nav style="display:flex; align-items:center; justify-content:space-between; padding:20px 48px; border-bottom:1px solid #111; position:sticky; top:0; background:#000000; z-index:100;">
-  <a href="index.html"><img src="MMM_Logo.png" alt="Mega Mission Media" style="height:52px; width:auto; display:block; mix-blend-mode:lighten;" /></a>
+<nav>
+  <a href="index.html" style="text-decoration:none; flex-shrink:0;"><img src="MMM_Logo.png" alt="Mega Mission Media" style="height:48px; width:auto; display:block; mix-blend-mode:lighten;" /></a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="services.html">Services</a></li>
@@ -385,6 +394,11 @@
   </ul>
   <a href="tel:8178608989" class="nav-cta">Call for Consultation &nbsp;·&nbsp; 817-860-8989</a>
 </nav>
+
+<!-- ============================================================ -->
+<!-- HDR · SHARED HEADER — NAV + CTA BUTTON                    -->
+<!-- ============================================================ -->
+
 
 <!-- ============================================================ -->
 <!-- P04-B01 · HERO — COMMUNITY HEADLINE + INTRO               -->
