@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carrie Carter | Mega Mission Media</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --black: #000000; --gold: #F0B429; --white: #FFFFFF;
+    --grey: #1a1a1a; --grey-mid: #2a2a2a; --grey-text: #999999;
+    --teal: #5EEAD4;
+  }
+  body { background: var(--black); color: var(--white); font-family: 'DM Sans', sans-serif; font-size: 16px; line-height: 1.7; }
+
+  .site-header { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid #222; }
+  .site-logo { font-family: 'Orbitron', sans-serif; font-size: 1.4rem; letter-spacing: 0.1em; color: var(--gold); text-decoration: none; }
+  .site-nav a { color: var(--white); text-decoration: none; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; margin-left: 30px; opacity: 0.7; transition: opacity 0.2s; }
+  .site-nav a:hover { opacity: 1; color: var(--gold); }
+
+  .hero { display: grid; grid-template-columns: 1fr 1fr; min-height: 90vh; align-items: center; }
+  .hero-text { padding: 80px 60px 80px 80px; }
+  .hero-eyebrow { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+  .hero-eyebrow::before { content: ''; display: inline-block; width: 40px; height: 1px; background: var(--gold); }
+  .hero-name { font-family: 'Orbitron', sans-serif; font-size: clamp(4rem, 7vw, 7rem); line-height: 0.95; letter-spacing: 0.02em; margin-bottom: 24px; }
+  .hero-name span { color: var(--gold); }
+  .hero-tagline { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.3rem; color: var(--teal); margin-bottom: 28px; opacity: 0.9; }
+  .hero-title { font-size: 0.9rem; color: var(--grey-text); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 40px; line-height: 1.8; }
+  .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary { background: var(--gold); color: var(--black); padding: 14px 32px; font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; transition: opacity 0.2s; display: inline-block; }
+  .btn-primary:hover { opacity: 0.85; }
+  .btn-outline { border: 1px solid var(--gold); color: var(--gold); padding: 14px 32px; font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; transition: all 0.2s; display: inline-block; }
+  .btn-outline:hover { background: var(--gold); color: var(--black); }
+  .hero-image { background: #111; height: 100%; min-height: 90vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+  .hero-image img { width: 100%; height: 100%; object-fit: cover; object-position: center top; position: absolute; inset: 0; }
+  .hero-image::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,0.35) 0%, transparent 50%); pointer-events: none; }
+  .headshot-placeholder { width: 260px; height: 260px; border: 2px solid var(--gold); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; z-index: 1; gap: 10px; }
+  .headshot-placeholder span { font-size: 0.75rem; letter-spacing: 0.1em; color: var(--gold); opacity: 0.6; text-transform: uppercase; }
+  .gold-bar { position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--gold); z-index: 2; }
+
+  .section-label { font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+  .section-title { font-family: 'Orbitron', sans-serif; font-size: clamp(2rem, 4vw, 3.5rem); letter-spacing: 0.05em; margin-bottom: 40px; }
+
+  .video-section { background: var(--grey); padding: 80px; border-top: 1px solid #222; border-bottom: 1px solid #222; }
+  .video-wrapper { max-width: 800px; margin: 0 auto; }
+  .video-embed { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border: 1px solid #333; }
+  .video-embed iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+  .video-caption { margin-top: 20px; font-family: 'Playfair Display', serif; font-style: italic; color: var(--teal); font-size: 1rem; text-align: center; opacity: 0.8; }
+
+  .story-section { padding: 100px 80px; max-width: 1200px; margin: 0 auto; }
+  .story-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 80px; align-items: start; }
+  .story-sidebar { position: sticky; top: 40px; }
+  .story-sidebar .section-title { font-size: 2.5rem; line-height: 1; margin-bottom: 24px; }
+  .gold-line { width: 60px; height: 3px; background: var(--gold); margin-bottom: 24px; }
+  .sidebar-quote { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.1rem; color: var(--teal); line-height: 1.6; opacity: 0.9; }
+  .story-body p { margin-bottom: 20px; color: #ccc; font-size: 1rem; line-height: 1.8; }
+  .story-body p strong { color: var(--white); font-weight: 600; }
+  .pull-quote { border-left: 3px solid var(--gold); padding: 20px 30px; margin: 40px 0; background: var(--grey); }
+  .pull-quote p { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.2rem; color: var(--gold); margin: 0; line-height: 1.6; }
+
+  .built-section { background: var(--grey); padding: 100px 80px; border-top: 1px solid #222; }
+  .built-inner { max-width: 1200px; margin: 0 auto; }
+  .built-card { background: var(--black); border: 1px solid #333; padding: 48px 40px; position: relative; overflow: hidden; max-width: 640px; }
+  .built-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--gold); }
+  .card-number { font-family: 'Orbitron', sans-serif; font-size: 5rem; color: #111; line-height: 1; margin-bottom: -10px; }
+  .card-title { font-family: 'Orbitron', sans-serif; font-size: 1.8rem; letter-spacing: 0.05em; color: var(--gold); margin-bottom: 16px; }
+  .card-desc { color: #aaa; font-size: 0.95rem; line-height: 1.7; }
+  .card-tag { display: inline-block; margin-top: 24px; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); border: 1px solid var(--gold); padding: 6px 14px; opacity: 0.7; }
+
+  .timeline-section { padding: 100px 80px; max-width: 1200px; margin: 0 auto; }
+  .timeline { margin-top: 60px; position: relative; padding-left: 40px; }
+  .timeline::before { content: ''; position: absolute; left: 0; top: 8px; bottom: 8px; width: 1px; background: linear-gradient(to bottom, var(--gold), transparent); }
+  .timeline-item { margin-bottom: 48px; position: relative; }
+  .timeline-item::before { content: ''; position: absolute; left: -44px; top: 8px; width: 8px; height: 8px; border-radius: 50%; background: var(--gold); }
+  .timeline-date { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+  .timeline-event { font-family: 'Orbitron', sans-serif; font-size: 1.4rem; letter-spacing: 0.05em; margin-bottom: 8px; }
+  .timeline-detail { color: #999; font-size: 0.9rem; line-height: 1.6; }
+
+  .stack-section { background: var(--grey); padding: 100px 80px; border-top: 1px solid #222; }
+  .stack-inner { max-width: 1200px; margin: 0 auto; }
+  .stack-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 2px; margin-top: 60px; border: 1px solid #333; }
+  .stack-item { background: var(--black); padding: 28px 24px; border: 1px solid #1a1a1a; transition: border-color 0.2s; }
+  .stack-item:hover { border-color: var(--gold); }
+  .stack-name { font-family: 'Orbitron', sans-serif; font-size: 1.1rem; letter-spacing: 0.05em; color: var(--white); margin-bottom: 6px; }
+  .stack-use { font-size: 0.78rem; color: var(--grey-text); line-height: 1.4; }
+
+  .wisdom-section { padding: 100px 80px; max-width: 1200px; margin: 0 auto; }
+  .wisdom-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; margin-top: 60px; }
+  .wisdom-card { background: var(--grey); padding: 48px 36px; border: 1px solid #222; }
+  .wisdom-q { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; opacity: 0.8; }
+  .wisdom-a { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.05rem; line-height: 1.7; color: var(--white); }
+
+  .open-section { padding: 80px; border-top: 1px solid #222; max-width: 1200px; margin: 0 auto; }
+  .open-pills { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 40px; }
+  .open-pill { display: flex; align-items: center; gap: 10px; border: 1px solid var(--teal); padding: 14px 28px; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal); }
+  .open-pill::before { content: '✓'; font-size: 0.8rem; }
+
+  .connect-section { background: var(--gold); padding: 100px 80px; }
+  .connect-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .connect-text .section-label { color: var(--black); opacity: 0.6; }
+  .connect-text .section-title { color: var(--black); margin-bottom: 20px; }
+  .connect-text p { color: #222; font-size: 1rem; line-height: 1.7; margin-bottom: 32px; }
+  .btn-black { background: var(--black); color: var(--gold); padding: 16px 36px; font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; display: inline-block; transition: opacity 0.2s; }
+  .btn-black:hover { opacity: 0.85; }
+  .connect-details { display: flex; flex-direction: column; gap: 20px; }
+  .connect-item { display: flex; align-items: flex-start; gap: 16px; }
+  .connect-icon { width: 40px; height: 40px; background: var(--black); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .connect-label { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: #444; margin-bottom: 4px; }
+  .connect-value { font-weight: 600; color: var(--black); font-size: 0.95rem; }
+  .connect-value a { color: var(--black); }
+
+  .tags-section { padding: 60px 80px; border-top: 1px solid #222; }
+  .tags-inner { max-width: 1200px; margin: 0 auto; }
+  .tags-wrap { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+  .tag { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--grey-text); border: 1px solid #333; padding: 6px 14px; transition: all 0.2s; cursor: default; }
+  .tag:hover { border-color: var(--gold); color: var(--gold); }
+
+  .footer { padding: 40px 80px; border-top: 1px solid #222; display: flex; justify-content: space-between; align-items: center; }
+  .footer-logo { font-family: 'Orbitron', sans-serif; font-size: 1.2rem; color: var(--gold); letter-spacing: 0.1em; }
+  .footer-copy { font-size: 0.78rem; color: var(--grey-text); }
+  .footer-mission { font-family: 'Playfair Display', serif; font-style: italic; font-size: 0.85rem; color: var(--grey-text); }
+
+  @media (max-width: 900px) {
+    .hero, .story-grid, .connect-inner { grid-template-columns: 1fr; }
+    .hero-text, .video-section, .story-section, .built-section, .timeline-section, .stack-section, .wisdom-section, .connect-section, .tags-section, .footer, .open-section { padding: 60px 24px; }
+    .hero-image { min-height: 50vh; }
+    .story-sidebar { position: static; }
+    .wisdom-grid { grid-template-columns: 1fr; }
+    .site-header { padding: 16px 24px; }
+    .site-nav { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="index.html" class="site-logo"><img src="MMM_Logo.png" alt="Mega Mission Media" style="height: 44px; width: auto; display: block;" /></a>
+  <nav class="site-nav">
+    <a href="#">Home</a>
+    <a href="#">Services</a>
+    <a href="#">Events</a>
+    <a href="#">Speakers</a>
+  </nav>
+</header>
+
+<!-- ============================================================ -->
+<!-- P05-B01 · HERO — NAME + TAGLINE + HEADSHOT              -->
+<!-- ============================================================ -->
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-eyebrow">Founder Profile · Fort Worth, Texas</div>
+    <h1 class="hero-name">CARRIE<br><span>CARTER</span></h1>
+    <p class="hero-tagline">Always find the silver lining.</p>
+    <p class="hero-title">
+      Founder & Owner · Cowtown Tour Company<br>
+      25 Years · Travel Technology · Experiential Business<br>
+      Born & Raised · Fort Worth, Texas
+    </p>
+    <div class="hero-ctas">
+      <a href="https://cowtowntourco.com" class="btn-primary">Book a Tour</a>
+      <a href="https://instagram.com/CowtownTourCo" class="btn-outline">@CowtownTourCo</a>
+    </div>
+  </div>
+  <div class="hero-image">
+    <div class="gold-bar"></div>
+    <div class="headshot-placeholder">
+      <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#F0B429" stroke-width="1">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+      </svg>
+      <span>Photo Coming</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- P05-B02 · VIDEO — RIDE AND SHARE INTERVIEW EMBED        -->
+<!-- ============================================================ -->
+<!-- VIDEO -->
+<section class="video-section">
+  <p class="section-label">Ride & Share Interview</p>
+  <h2 class="section-title">Two Layoffs. One Mini Bus.<br>She Stopped Knocking on Closed Doors.</h2>
+  <div class="video-wrapper">
+    <div class="video-embed" style="display:flex; align-items:center; justify-content:center; background:#111; min-height:200px;">
+      <p style="color:#555; font-size:0.85rem; letter-spacing:0.1em; text-transform:uppercase;">Video Coming Soon</p>
+    </div>
+    <p class="video-caption">"If a door doesn't open, there is a reason. Something else is waiting."</p>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- P05-B03 · STORY — PART 1 WHO, PART 2 WHAT, 3 WHY, 4 HOW-->
+<!-- ============================================================ -->
+<!-- STORY -->
+<section style="padding: 100px 0; border-bottom: 1px solid #222;">
+  <div class="story-section">
+
+    <!-- PART 1 -->
+    <div class="story-grid" style="margin-bottom: 80px;">
+      <div class="story-sidebar">
+        <p class="section-label">Part One</p>
+        <h2 class="section-title">Who She<br>Used to<br>Be</h2>
+        <div class="gold-line"></div>
+        <p class="sidebar-quote">"Everything I learned, I brought with me."</p>
+      </div>
+      <div class="story-body">
+        <p>Carrie Carter is Fort Worth born and raised. Before she ever put passengers on a mini bus, she spent <strong>25 years working at the heart of travel technology</strong> — beginning at Travelscape, the company that became the platform Expedia purchased to build itself into one of the world's largest travel brands.</p>
+        <p>From there her career took her across the industry: Expedia, Orbitz, 12 years in Las Vegas working in travel tech, then 12 more years at Sabre. Her roles spanned customer development, client relations, revenue management, marketing, and digital media. A wide-ranging, successful career by any measure.</p>
+        <div class="pull-quote">
+          <p>"I was knocking on doors I thought would open. And all of a sudden — nope. That one's not gonna open. So now what?"</p>
+        </div>
+        <p>Then came the layoffs. Two of them, within three years. The first took a full year before she landed another position. The second came after she built and developed systems at a new company, trained the entire team to use them, and was told — essentially — thank you, we've got it from here.</p>
+        <p>Both felt like endings. Both turned out to be redirections.</p>
+      </div>
+    </div>
+
+    <!-- PART 2 -->
+    <div class="story-grid" style="margin-bottom: 80px; padding-top: 80px; border-top: 1px solid #222;">
+      <div class="story-sidebar">
+        <p class="section-label">Part Two</p>
+        <h2 class="section-title">What She<br>Built</h2>
+        <div class="gold-line"></div>
+        <p class="sidebar-quote">"Fort Worth had a gap. And I was the one to fill it."</p>
+      </div>
+      <div class="story-body">
+        <p>Cowtown Tour Company is a guided tour experience based in Fort Worth, Texas. Carrie operates a <strong>mini bus with longhorn horns on the front</strong>, holds 11 passengers, and takes groups all over the city — well beyond the Stockyards stereotype — to show visitors what Fort Worth is truly made of.</p>
+        <p>Tours run every day. Barbecue and breweries. Burgers and breweries. Margarita tours. Private custom experiences where clients describe their group, their time, and their vision — and Carrie builds the itinerary around them.</p>
+        <div class="pull-quote">
+          <p>"I provide memories for people. Experiences they will never forget. That's what I do."</p>
+        </div>
+        <p>Passengers come from across the country and around the world. Sometimes three or four different states are represented on a single bus. Strangers get on. Something else gets off. And with the <strong>2026 FIFA World Cup coming to Fort Worth</strong>, Carrie is positioned at exactly the right moment for her city's biggest stage yet.</p>
+      </div>
+    </div>
+
+    <!-- PART 3 -->
+    <div class="story-grid" style="margin-bottom: 80px; padding-top: 80px; border-top: 1px solid #222;">
+      <div class="story-sidebar">
+        <p class="section-label">Part Three</p>
+        <h2 class="section-title">Why She<br>Built It</h2>
+        <div class="gold-line"></div>
+        <p class="sidebar-quote">"Life is too short to not benefit the people around you."</p>
+      </div>
+      <div class="story-body">
+        <p>After the second layoff, Carrie entered a season of quiet time — reflection, prayer, and soul searching. She turned to ChatGPT and Claude, put in what she knew, what she believed in, and what she was good at, and asked for help thinking through what was next.</p>
+        <p>From that conversation, she began to shape an idea. She brought it to friends. Their reaction was immediate: <em>oh my gosh, it's perfect.</em> That confirmation gave her the green light.</p>
+        <div class="pull-quote">
+          <p>"Fort Worth is my hometown. I was born and raised here. This business is love made into a product."</p>
+        </div>
+        <p>The city she had grown up in had a gap — no tour company showing people the full Fort Worth beyond the obvious landmarks. She saw it. She had 25 years of travel industry experience to back her up. And she had a servant's heart that had always been oriented toward making other people's lives better. <strong>Cowtown Tour Company was the only logical answer.</strong></p>
+      </div>
+    </div>
+
+    <!-- PART 4 -->
+    <div class="story-grid" style="padding-top: 80px; border-top: 1px solid #222;">
+      <div class="story-sidebar">
+        <p class="section-label">Part Four</p>
+        <h2 class="section-title">How She<br>Did It</h2>
+        <div class="gold-line"></div>
+        <p class="sidebar-quote">"I molded the business into what it is now."</p>
+      </div>
+      <div class="story-body">
+        <p>The idea did not arrive as a single flash of inspiration. It came through a process — reflection, AI-assisted brainstorming, conversations with friends, and a willingness to sit with uncertainty long enough to let clarity emerge.</p>
+        <p>Carrie used <strong>ChatGPT and Claude as thinking partners</strong> when she hit a wall during her job search. She input her experience, her values, and her beliefs and let the output give her something to chew on. From there she molded the concept into Cowtown Tour Company.</p>
+        <div class="pull-quote">
+          <p>"AI is here and it's not going anywhere. I used it when I didn't know what to do next — and it helped me find my next."</p>
+        </div>
+        <p>She officially launched in September 2024. First tours ran that same month. Tours run every day now. Growth is driven by word of mouth, social media video sharing, and the kind of experience that passengers cannot stop talking about after they get off the bus.</p>
+        <p>Carrie also attends <strong>1 Million Cups Fort Worth every Wednesday morning</strong> — a weekly gathering for entrepreneurs and founders that keeps her connected, accountable, and in community with other builders in the city she loves.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- P05-B04 · WHAT BUILT — COMPANY CARD + SERVICES          -->
+<!-- ============================================================ -->
+<!-- WHAT SHE BUILT -->
+<section class="built-section">
+  <div class="built-inner">
+    <p class="section-label">What She Built</p>
+    <h2 class="section-title">An Evolving Ecosystem</h2>
+    <div style="margin-top: 60px;">
+      <div class="built-card">
+        <div class="card-number">01</div>
+        <h3 class="card-title">Cowtown Tour Company</h3>
+        <p class="card-desc">A guided tour and private experience company showing visitors and locals the Fort Worth that most people never get to see. A mini bus. Longhorn horns. Eleven seats. And a born-and-raised Fort Worth woman ready to show the world what her city is really made of.</p>
+        <p class="card-desc" style="margin-top: 16px; color: #777;">"People come thinking of Cow Town. They leave knowing Fort Worth."</p>
+        <span class="card-tag">Experiential · Tourism · Private Events</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- P05-B05 · TIMELINE — LAUNCH MILESTONES                 -->
+<!-- ============================================================ -->
+<!-- TIMELINE -->
+<section class="timeline-section">
+  <p class="section-label">The Launch Timeline</p>
+  <h2 class="section-title">How She Did It</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-date">Career Start</div>
+      <div class="timeline-event">Travelscape → Expedia</div>
+      <p class="timeline-detail">Joins Travelscape — the company Expedia acquires to become what it is today. Begins 25-year career at the heart of travel technology.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">12 Years · Las Vegas</div>
+      <div class="timeline-event">Travel Tech in Vegas</div>
+      <p class="timeline-detail">Expands into Las Vegas travel tech. Customer development, revenue management, marketing, digital media. Deep industry expertise across major platforms.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">12 Years</div>
+      <div class="timeline-event">Sabre</div>
+      <p class="timeline-detail">12 years at one of the world's largest travel technology companies. Client relations, revenue management, and digital strategy at scale.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">The Pivot</div>
+      <div class="timeline-event">Laid Off. Twice.</div>
+      <p class="timeline-detail">Two layoffs within three years. The first took a year to recover from. The second came after she built and trained an entire team — then was no longer needed. Both became redirections.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">The Quiet Season</div>
+      <div class="timeline-event">Reflection. Prayer. AI.</div>
+      <p class="timeline-detail">Enters a season of quiet and soul searching. Turns to ChatGPT and Claude as thinking partners. Inputs her experience and values. Begins molding an idea.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">September 2024</div>
+      <div class="timeline-event">First Tours. Official Launch.</div>
+      <p class="timeline-detail">Cowtown Tour Company officially launches. First tours run in September 2024. Tours run every day. The bus fills. The city shows up. Fort Worth has a tour company.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">Summer 2026</div>
+      <div class="timeline-event">FIFA World Cup · Fort Worth</div>
+      <p class="timeline-detail">Fort Worth is a host city for the 2026 FIFA World Cup. Cowtown Tour Company is positioned at exactly the right moment — ready to show the world what this city is made of.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STACK -->
+<section class="stack-section">
+  <div class="stack-inner">
+    <p class="section-label">Tools & Tech</p>
+    <h2 class="section-title">The Startup Stack</h2>
+    <div style="margin-top: 32px; margin-bottom: 48px; border-left: 3px solid var(--teal); padding: 20px 28px; background: #0a1f1c;">
+      <p style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.1rem; color: var(--teal); line-height: 1.7; margin: 0;">
+        "AI is here and it's not going anywhere. I went to ChatGPT and Claude — put in what I knew, what I believed in — and from that output I molded the business into what it is now."
+      </p>
+      <p style="margin-top: 12px; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: #5EEAD4; opacity: 0.5;">— Carrie Carter, Founder</p>
+    </div>
+    <div class="stack-grid">
+      <div class="stack-item"><div class="stack-name">ChatGPT</div><div class="stack-use">Business ideation & brainstorming</div></div>
+      <div class="stack-item"><div class="stack-name">Claude</div><div class="stack-use">AI thinking & planning partner</div></div>
+      <div class="stack-item"><div class="stack-name">Instagram</div><div class="stack-use">Primary marketing platform · @CowtownTourCo</div></div>
+      <div class="stack-item"><div class="stack-name">Facebook</div><div class="stack-use">Social reach · @CowtownTourCo</div></div>
+      <div class="stack-item"><div class="stack-name">cowtowntourco.com</div><div class="stack-use">Website & booking</div></div>
+      <div class="stack-item"><div class="stack-name">Direct Message</div><div class="stack-use">Primary lead intake & booking method</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- P05-B07 · WISDOM — 6 QUOTE CARDS                       -->
+<!-- ============================================================ -->
+<!-- WISDOM -->
+<section class="wisdom-section">
+  <p class="section-label">Lessons & Wisdom</p>
+  <h2 class="section-title">What the Seeker Needs to Hear</h2>
+  <div class="wisdom-grid">
+    <div class="wisdom-card">
+      <p class="wisdom-q">Advice to her past self</p>
+      <p class="wisdom-a">"Always find the silver lining. Even on the bad days, there is good. The layoffs that felt like endings were redirections all along."</p>
+    </div>
+    <div class="wisdom-card">
+      <p class="wisdom-q">What success means now</p>
+      <p class="wisdom-a">"Providing memories. Experiences people will never forget. The look on someone's face when they fall in love with Fort Worth for the first time."</p>
+    </div>
+    <div class="wisdom-card">
+      <p class="wisdom-q">To someone afraid to start</p>
+      <p class="wisdom-a">"Life is too short to not have fun and to not benefit the people around you. Find the silver lining and start building toward it."</p>
+    </div>
+    <div class="wisdom-card">
+      <p class="wisdom-q">What had to change</p>
+      <p class="wisdom-a">"That a closed door is a rejection. If a door doesn't open, there is a reason. Something else is waiting. I'm now on the path I was always supposed to be on."</p>
+    </div>
+    <div class="wisdom-card">
+      <p class="wisdom-q">On resilience</p>
+      <p class="wisdom-a">"Resilience is not optional. You will hit walls. The lesson is not to force them — it is to trust that the right door is somewhere else and keep moving."</p>
+    </div>
+    <div class="wisdom-card">
+      <p class="wisdom-q">What keeps her going</p>
+      <p class="wisdom-a">"The people on the bus. The pictures, the laughs, the connections between strangers. Leading with a servant's heart — how can I make other people's lives better?"</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- P05-B08 · OPEN TO — COLLABORATION PILLS                -->
+<!-- ============================================================ -->
+<!-- OPEN TO -->
+<section class="open-section">
+  <p class="section-label">Collaboration</p>
+  <h2 class="section-title">Open To</h2>
+  <div class="open-pills">
+    <div class="open-pill">Private Group Bookings</div>
+    <div class="open-pill">Corporate Events</div>
+    <div class="open-pill">Partnerships</div>
+    <div class="open-pill">Interviews</div>
+    <div class="open-pill">Speaking Engagements</div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- P05-B09 · CONNECT — GOLD CTA + CONTACT DETAILS         -->
+<!-- ============================================================ -->
+<!-- CONNECT -->
+<section class="connect-section">
+  <div class="connect-inner">
+    <div class="connect-text">
+      <p class="section-label">Connect</p>
+      <h2 class="section-title">Come See<br>Fort Worth.</h2>
+      <p>Whether you're visiting for the first time, planning a group experience, or just ready to fall in love with this city — Carrie's mini bus has a seat for you. World Cup summer is here. Fort Worth is ready.</p>
+      <a href="https://cowtowntourco.com" class="btn-black">Book a Tour</a>
+    </div>
+    <div class="connect-details">
+      <div class="connect-item">
+        <div class="connect-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F0B429" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div><div class="connect-label">Location</div><div class="connect-value">Fort Worth, Texas</div></div>
+      </div>
+      <div class="connect-item">
+        <div class="connect-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F0B429" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <div><div class="connect-label">Website</div><div class="connect-value"><a href="https://cowtowntourco.com">cowtowntourco.com</a></div></div>
+      </div>
+      <div class="connect-item">
+        <div class="connect-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F0B429" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </div>
+        <div><div class="connect-label">Instagram & Facebook</div><div class="connect-value"><a href="https://instagram.com/CowtownTourCo">@CowtownTourCo</a></div></div>
+      </div>
+      <div class="connect-item">
+        <div class="connect-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F0B429" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <div><div class="connect-label">Best Way to Reach</div><div class="connect-value">Direct message on Instagram or Facebook</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- P05-B10 · TAGS — SEARCHABLE PROFILE TAGS               -->
+<!-- ============================================================ -->
+<!-- TAGS -->
+<section class="tags-section">
+  <div class="tags-inner">
+    <p class="section-label">Profile Tags</p>
+    <div class="tags-wrap">
+      <span class="tag">Female Founder</span><span class="tag">Corporate Pivot</span><span class="tag">Tourism</span><span class="tag">Hospitality</span><span class="tag">Experiential Business</span><span class="tag">Fort Worth TX</span><span class="tag">Born & Raised Fort Worth</span><span class="tag">AI-Assisted Startup</span><span class="tag">Bootstrapped</span><span class="tag">Laid Off Twice</span><span class="tag">Travel Tech Background</span><span class="tag">Former Expedia</span><span class="tag">Former Sabre</span><span class="tag">World Cup 2026</span><span class="tag">Passion Project</span><span class="tag">Servant Leadership</span><span class="tag">Word of Mouth Growth</span><span class="tag">Small Group Tours</span><span class="tag">Private Tours</span><span class="tag">Cowtown</span>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-logo">Mega Mission Media</div>
+  <div class="footer-mission">Media with a Mission. Content with a Calling.</div>
+  <div class="footer-copy">© 2026 Mega Mission Media · Fort Worth, TX</div>
+</footer>
+
+</body>
+</html>

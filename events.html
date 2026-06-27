@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Events & Announcements — Mega Mission Media</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0a0a0a;
+    --gold: #F0B429;
+    --gold-dim: #a37c1c;
+    --white: #ffffff;
+    --gray: #aaaaaa;
+    --surface: #111111;
+    --border: #222222;
+    --teal: #5EEAD4;
+  }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 48px;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    background: var(--black);
+    z-index: 100;
+  }
+  .logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--gray);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-links a.active { color: var(--gold); }
+  .nav-cta {
+    display: inline-block;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 10px 22px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .nav-cta:hover { background: var(--gold); color: var(--black); }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 100px 48px 80px;
+    max-width: 1100px;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--border);
+  }
+  .eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(3.5rem, 9vw, 7rem);
+    line-height: 0.92;
+    letter-spacing: 0.02em;
+    margin-bottom: 30px;
+  }
+  .hero h1 span { color: var(--gold); }
+  .hero-tagline {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.25rem;
+    color: var(--gray);
+    max-width: 560px;
+  }
+
+  /* ── SECTION ── */
+  .events-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 48px;
+  }
+  .section-rule {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 48px;
+  }
+  .section-rule::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── FEATURED EVENT ── */
+  .featured-event {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--gold);
+    padding: 48px 40px;
+    margin-bottom: 2px;
+    position: relative;
+  }
+  .featured-badge {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--black);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    margin-bottom: 20px;
+  }
+  .featured-event h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.4rem;
+    letter-spacing: 0.04em;
+    color: var(--white);
+    margin-bottom: 8px;
+    line-height: 1;
+  }
+  .featured-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--gold);
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+  .featured-event p {
+    font-size: 0.9rem;
+    color: var(--gray);
+    line-height: 1.75;
+    max-width: 640px;
+    margin-bottom: 28px;
+  }
+  .event-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-bottom: 28px;
+  }
+  .meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .meta-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #555;
+  }
+  .meta-value {
+    font-size: 0.88rem;
+    color: var(--white);
+    font-weight: 500;
+  }
+  .coming-soon-tag {
+    display: inline-block;
+    border: 1px solid var(--gold-dim);
+    color: var(--gold);
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    opacity: 0.8;
+  }
+
+  /* ── STANDARD EVENT ROW ── */
+  .event-row {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 32px 40px;
+    margin-bottom: 2px;
+    display: grid;
+    grid-template-columns: 180px 1fr auto;
+    align-items: center;
+    gap: 32px;
+    transition: border-color 0.2s;
+  }
+  .event-row:hover { border-color: var(--gold-dim); }
+  .event-freq {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    text-transform: uppercase;
+    line-height: 1.4;
+  }
+  .event-time {
+    font-size: 0.75rem;
+    color: #555;
+    margin-top: 4px;
+    letter-spacing: 0.06em;
+  }
+  .event-name {
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+  .event-detail {
+    font-size: 0.82rem;
+    color: #666;
+    line-height: 1.5;
+  }
+  .event-detail a {
+    color: var(--teal);
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .event-detail a:hover { opacity: 0.75; }
+  .event-badge {
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: 1px solid var(--gold-dim);
+    color: var(--gold);
+    padding: 6px 14px;
+    white-space: nowrap;
+  }
+  .event-badge.teal {
+    border-color: var(--teal);
+    color: var(--teal);
+  }
+  .event-badge.placeholder {
+    border-color: #333;
+    color: #555;
+  }
+
+  /* ── PLACEHOLDER ROW ── */
+  .event-row.placeholder-row {
+    opacity: 0.5;
+    border-style: dashed;
+  }
+
+  /* ── COMMUNITY SECTION ── */
+  .community-section {
+    background: #0d0d0d;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 80px 48px;
+    margin-top: 80px;
+  }
+  .community-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .community-section h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    letter-spacing: 0.04em;
+    margin-bottom: 8px;
+  }
+  .community-section p {
+    font-size: 0.9rem;
+    color: var(--gray);
+    max-width: 540px;
+    line-height: 1.75;
+    margin-bottom: 28px;
+  }
+  .community-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--gold);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: gap 0.2s;
+  }
+  .community-cta:hover { gap: 16px; }
+
+  /* ── LIST YOUR EVENT ── */
+  .list-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 48px;
+    border-bottom: 1px solid var(--border);
+  }
+  .list-inner {
+    background: #0a1f1c;
+    border: 1px solid var(--teal);
+    border-left: 4px solid var(--teal);
+    padding: 40px 44px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .list-text h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 0.04em;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  .list-text p {
+    font-size: 0.88rem;
+    color: var(--gray);
+    line-height: 1.6;
+    max-width: 480px;
+  }
+  .list-cta {
+    display: inline-block;
+    background: var(--teal);
+    color: var(--black);
+    padding: 14px 32px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: opacity 0.2s;
+  }
+  .list-cta:hover { opacity: 0.85; }
+
+  /* ── FOOTER ── */
+  .footer-network {
+    padding: 28px 48px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .network-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #444;
+  }
+  .network-links {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+  .network-links a {
+    font-size: 0.82rem;
+    color: var(--gray);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .network-links a:hover { color: var(--gold); }
+  .network-links a.current { color: var(--gold); font-weight: 600; }
+  .network-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #444;
+  }
+  .footer-copy {
+    padding: 16px 48px;
+    border-top: 1px solid #1a1a1a;
+  }
+  .footer-copy p {
+    font-size: 0.7rem;
+    color: #333;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .hero, .events-section, .community-section, .list-section { padding: 60px 24px; }
+    .event-row { grid-template-columns: 1fr; gap: 12px; }
+    .featured-event { padding: 36px 24px; }
+    .list-inner { flex-direction: column; padding: 32px 24px; }
+    .footer-network, .footer-copy { padding: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- HDR · SHARED HEADER — NAV + CTA BUTTON                    -->
+<!-- ============================================================ -->
+<!-- HDR-NAV · NAVIGATION BAR -->
+<nav>
+  <a href="index.html" class="logo"><img src="MMM_Logo.png" alt="Mega Mission Media" style="height: 52px; width: auto; display: block;" /></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="events.html" class="active">Events</a></li>
+  </ul>
+  <a href="tel:8178608989" class="nav-cta">Call for Consultation &nbsp;·&nbsp; 817-860-8989</a>
+</nav>
+
+<!-- ============================================================ -->
+<!-- P03-B01 · HERO — EVENTS & ANNOUNCEMENTS                   -->
+<!-- ============================================================ -->
+<section class="hero">
+  <p class="eyebrow">In the Community</p>
+  <h1>EVENTS &<br><span>ANNOUNCEMENTS</span></h1>
+  <p class="hero-tagline">Where the community gathers, the mission grows. Find us in the room — and bring somebody with you.</p>
+</section>
+
+<!-- ============================================================ -->
+<!-- P03-B02 · EVENTS LIST — FBI + 1MC + LENA PLACEHOLDER       -->
+<!-- ============================================================ -->
+<section class="events-section">
+  <div class="section-rule">MMM Events & Community</div>
+
+  <!-- FEATURED: FBI COMMUNITY -->
+  <div class="featured-event">
+    <div class="featured-badge">MMM Signature Event</div>
+    <h2>FBI COMMUNITY</h2>
+    <p class="featured-subtitle">Faith · Business · Impact</p>
+    <p>Every Monday morning, founders, entrepreneurs, and faith-driven professionals gather to pray, share strategies, and build community around one unshakeable belief — that God and business are not separate. Where faith fuels the work and the work creates impact. Speakers. Strategy. Spirit. The most wanted list starts here.</p>
+    <div class="event-meta">
+      <div class="meta-item">
+        <span class="meta-label">Frequency</span>
+        <span class="meta-value">Every Monday</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Time</span>
+        <span class="meta-value">8:30 AM</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Host</span>
+        <span class="meta-value">Mega Mission Media · Susy Gordon</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Location</span>
+        <span class="meta-value">Fort Worth, TX — Details Coming Soon</span>
+      </div>
+    </div>
+    <span class="coming-soon-tag">Details Coming Soon — Call 817-860-8989 to Get on the List</span>
+  </div>
+
+  <!-- ONE MILLION CUPS -->
+  <div class="event-row">
+    <div>
+      <div class="event-freq">Every Wednesday</div>
+      <div class="event-time">9:00 AM</div>
+    </div>
+    <div>
+      <div class="event-name">One Million Cups Fort Worth</div>
+      <div class="event-detail">
+        Entrepreneurship · Downtown Fort Worth<br>
+        Weekly gathering for founders, entrepreneurs, and builders in the DFW area.<br>
+        <a href="https://1millioncups.com" target="_blank">1millioncups.com →</a>
+      </div>
+    </div>
+    <div class="event-badge">Weekly</div>
+  </div>
+
+  <!-- LENA PLACEHOLDER -->
+  <div class="event-row placeholder-row">
+    <div>
+      <div class="event-freq">Monthly</div>
+    </div>
+    <div>
+      <div class="event-name" style="color: #555;">Lena Killion — Event Coming Soon</div>
+      <div class="event-detail">MLK Pre Arrangements · Fort Worth, TX<br>Speed Networking & Community Events — details to be added.</div>
+    </div>
+    <div class="event-badge placeholder">Coming Soon</div>
+  </div>
+
+
+
+</section>
+
+<!-- ============================================================ -->
+<!-- P03-B03 · COMMUNITY — COMMUNITY IS THE STRATEGY           -->
+<!-- ============================================================ -->
+<section class="community-section">
+  <div class="community-inner">
+    <p class="eyebrow" style="font-size:0.72rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--gold); margin-bottom:16px;">Why We Show Up</p>
+    <h2>Community is<br>the Strategy.</h2>
+    <p>Every connection Susy has made that mattered — the client who is still with her today, the passenger who taught her Claude Code, the networking community that became her founding home — came from showing up in a room. These events are not optional. They are the mission.</p>
+    <a href="https://1millioncups.com" target="_blank" class="community-cta">Learn About One Million Cups &nbsp;→</a>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- P03-B04 · LIST YOUR EVENT — TEAL CTA BANNER               -->
+<!-- ============================================================ -->
+<section class="list-section">
+  <div class="list-inner">
+    <div class="list-text">
+      <h3>Want to List Your Event Here?</h3>
+      <p>MMM clients and community partners can list their events on this page — for free. If you are part of the MMM network and have something coming up, call or text and we will get it on the calendar.</p>
+    </div>
+    <a href="tel:8178608989" class="list-cta">Call 817-860-8989</a>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- FTR · SHARED FOOTER — THE NETWORK + COPYRIGHT             -->
+<!-- ============================================================ -->
+<div class="footer-network">
+  <span class="network-label">The Network</span>
+  <div class="network-links">
+    <a href="https://susygordon.com">susygordon.com</a>
+    <div class="network-dot"></div>
+    <a href="https://megamissionmedia.com" class="current">megamissionmedia.com</a>
+  </div>
+</div>
+<div class="footer-copy">
+  <p>© 2026 Mega Mission Media &nbsp;·&nbsp; Fort Worth, TX &nbsp;·&nbsp; All Rights Reserved &nbsp;·&nbsp; Built in a Car. Born in Obedience.</p>
+</div>
+
+</body>
+</html>

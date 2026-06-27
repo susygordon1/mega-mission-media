@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Susy Gordon | Mega Mission Media</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --black: #000000; --gold: #F0B429; --white: #FFFFFF;
+    --grey: #1a1a1a; --grey-mid: #2a2a2a; --grey-text: #999999;
+    --teal: #5EEAD4;
+  }
+  body { background: var(--black); color: var(--white); font-family: 'DM Sans', sans-serif; font-size: 16px; line-height: 1.7; }
+
+  .site-header { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid #222; }
+  .site-logo { font-family: 'Orbitron', sans-serif; font-size: 1.4rem; letter-spacing: 0.1em; color: var(--gold); text-decoration: none; }
+  .site-nav a { color: var(--white); text-decoration: none; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; margin-left: 30px; opacity: 0.7; transition: opacity 0.2s; }
+  .site-nav a:hover { opacity: 1; color: var(--gold); }
+
+  .hero { display: grid; grid-template-columns: 1fr 1fr; min-height: 90vh; align-items: center; }
+  .hero-text { padding: 80px 60px 80px 80px; }
+  .hero-eyebrow { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+  .hero-eyebrow::before { content: ''; display: inline-block; width: 40px; height: 1px; background: var(--gold); }
+  .hero-name { font-family: 'Orbitron', sans-serif; font-size: clamp(4rem, 7vw, 7rem); line-height: 0.95; letter-spacing: 0.02em; margin-bottom: 24px; }
+  .hero-name span { color: var(--gold); }
+  .hero-tagline { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.3rem; color: var(--teal); margin-bottom: 28px; opacity: 0.9; }
+  .hero-title { font-size: 0.9rem; color: var(--grey-text); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 40px; line-height: 1.8; }
+  .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary { background: var(--gold); color: var(--black); padding: 14px 32px; font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; transition: opacity 0.2s; }
+  .btn-primary:hover { opacity: 0.85; }
+  .btn-outline { border: 1px solid var(--gold); color: var(--gold); padding: 14px 32px; font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; transition: all 0.2s; }
+  .btn-outline:hover { background: var(--gold); color: var(--black); }
+  .hero-image { background: #111; height: 100%; min-height: 90vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+  .hero-image img { width: 100%; height: 100%; object-fit: cover; object-position: center top; position: absolute; inset: 0; }
+  .hero-image::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,0.35) 0%, transparent 50%); pointer-events: none; }
+  .gold-bar { position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--gold); }
+
+  .video-section { background: var(--grey); padding: 80px; border-top: 1px solid #222; border-bottom: 1px solid #222; }
+  .section-label { font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+  .section-title { font-family: 'Orbitron', sans-serif; font-size: clamp(2rem, 4vw, 3.5rem); letter-spacing: 0.05em; margin-bottom: 40px; }
+  .video-wrapper { max-width: 800px; margin: 0 auto; }
+  .video-embed { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border: 1px solid #333; }
+  .video-embed iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+  .video-caption { margin-top: 20px; font-family: 'Playfair Display', serif; font-style: italic; color: var(--teal); font-size: 1rem; text-align: center; opacity: 0.8; }
+
+  .story-section { padding: 100px 80px; max-width: 1200px; margin: 0 auto; }
+  .story-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 80px; align-items: start; }
+  .story-sidebar { position: sticky; top: 40px; }
+  .story-sidebar .section-title { font-size: 2.5rem; line-height: 1; margin-bottom: 24px; }
+  .gold-line { width: 60px; height: 3px; background: var(--gold); margin-bottom: 24px; }
+  .sidebar-quote { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.1rem; color: var(--teal); line-height: 1.6; opacity: 0.9; }
+  .story-body p { margin-bottom: 20px; color: #ccc; font-size: 1rem; line-height: 1.8; }
+  .story-body p strong { color: var(--white); font-weight: 600; }
+  .pull-quote { border-left: 3px solid var(--gold); padding: 20px 30px; margin: 40px 0; background: var(--grey); }
+  .pull-quote p { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.2rem; color: var(--gold); margin: 0; line-height: 1.6; }
+
+  .built-section { background: var(--grey); padding: 100px 80px; border-top: 1px solid #222; }
+  .built-inner { max-width: 1200px; margin: 0 auto; }
+  .built-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 60px; }
+  .built-card { background: var(--black); border: 1px solid #333; padding: 48px 40px; position: relative; overflow: hidden; }
+  .built-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--gold); }
+  .card-number { font-family: 'Orbitron', sans-serif; font-size: 5rem; color: #111; line-height: 1; margin-bottom: -10px; }
+  .card-title { font-family: 'Orbitron', sans-serif; font-size: 1.8rem; letter-spacing: 0.05em; color: var(--gold); margin-bottom: 16px; }
+  .card-desc { color: #aaa; font-size: 0.95rem; line-height: 1.7; }
+  .card-tag { display: inline-block; margin-top: 24px; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); border: 1px solid var(--gold); padding: 6px 14px; opacity: 0.7; }
+
+  .timeline-section { padding: 100px 80px; max-width: 1200px; margin: 0 auto; }
+  .timeline { margin-top: 60px; position: relative; padding-left: 40px; }
+  .timeline::before { content: ''; position: absolute; left: 0; top: 8px; bottom: 8px; width: 1px; background: linear-gradient(to bottom, var(--gold), transparent); }
+  .timeline-item { margin-bottom: 48px; position: relative; }
+  .timeline-item::before { content: ''; position: absolute; left: -44px; top: 8px; width: 8px; height: 8px; border-radius: 50%; background: var(--gold); }
+  .timeline-date { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+  .timeline-event { font-family: 'Orbitron', sans-serif; font-size: 1.4rem; letter-spacing: 0.05em; margin-bottom: 8px; }
+  .timeline-detail { color: #999; font-size: 0.9rem; line-height: 1.6; }
+
+  .stack-section { background: var(--grey); padding: 100px 80px; border-top: 1px solid #222; }
+  .stack-inner { max-width: 1200px; margin: 0 auto; }
+  .stack-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 2px; margin-top: 60px; border: 1px solid #333; }
+  .stack-item { background: var(--black); padding: 28px 24px; border: 1px solid #1a1a1a; transition: border-color 0.2s; }
+  .stack-item:hover { border-color: var(--gold); }
+  .stack-name { font-family: 'Orbitron', sans-serif; font-size: 1.1rem; letter-spacing: 0.05em; color: var(--white); margin-bottom: 6px; }
+  .stack-use { font-size: 0.78rem; color: var(--grey-text); line-height: 1.4; }
+
+  .wisdom-section { padding: 100px 80px; max-width: 1200px; margin: 0 auto; }
+  .wisdom-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; margin-top: 60px; }
+  .wisdom-card { background: var(--grey); padding: 48px 36px; border: 1px solid #222; }
+  .wisdom-q { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; opacity: 0.8; }
+  .wisdom-a { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.05rem; line-height: 1.7; color: var(--white); }
+
+  .connect-section { background: var(--gold); padding: 100px 80px; }
+  .connect-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .connect-text .section-label { color: var(--black); opacity: 0.6; }
+  .connect-text .section-title { color: var(--black); }
+  .connect-text p { color: #222; font-size: 1rem; line-height: 1.7; margin-bottom: 32px; }
+  .btn-black { background: var(--black); color: var(--gold); padding: 16px 36px; font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; display: inline-block; transition: opacity 0.2s; }
+  .btn-black:hover { opacity: 0.85; }
+  .connect-details { display: flex; flex-direction: column; gap: 20px; }
+  .connect-item { display: flex; align-items: flex-start; gap: 16px; }
+  .connect-icon { width: 40px; height: 40px; background: var(--black); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .connect-label { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: #444; margin-bottom: 4px; }
+  .connect-value { font-weight: 600; color: var(--black); font-size: 0.95rem; }
+  .connect-value a { color: var(--black); }
+
+  .tags-section { padding: 60px 80px; border-top: 1px solid #222; }
+  .tags-inner { max-width: 1200px; margin: 0 auto; }
+  .tags-wrap { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+  .tag { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--grey-text); border: 1px solid #333; padding: 6px 14px; transition: all 0.2s; cursor: default; }
+  .tag:hover { border-color: var(--gold); color: var(--gold); }
+
+  .open-section { padding: 80px; border-top: 1px solid #222; max-width: 1200px; margin: 0 auto; }
+  .open-pills { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 40px; }
+  .open-pill { display: flex; align-items: center; gap: 10px; border: 1px solid var(--teal); padding: 14px 28px; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal); }
+  .open-pill::before { content: '✓'; font-size: 0.8rem; }
+
+  .footer { padding: 40px 80px; border-top: 1px solid #222; display: flex; justify-content: space-between; align-items: center; }
+  .footer-logo { font-family: 'Orbitron', sans-serif; font-size: 1.2rem; color: var(--gold); letter-spacing: 0.1em; }
+  .footer-copy { font-size: 0.78rem; color: var(--grey-text); }
+  .footer-mission { font-family: 'Playfair Display', serif; font-style: italic; font-size: 0.85rem; color: var(--grey-text); }
+
+  @media (max-width: 900px) {
+    .hero, .story-grid, .built-grid, .wisdom-grid, .connect-inner { grid-template-columns: 1fr; }
+    .hero-text, .video-section, .story-section, .built-section, .timeline-section, .stack-section, .wisdom-section, .connect-section, .tags-section, .footer, .open-section { padding: 60px 24px; }
+    .hero-image { min-height: 50vh; }
+    .story-sidebar { position: static; }
+    .wisdom-grid { grid-template-columns: 1fr; }
+    .site-header { padding: 16px 24px; }
+    .site-nav { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="index.html" class="site-logo"><img src="MMM_Logo.png" alt="Mega Mission Media" style="height: 44px; width: auto; display: block;" /></a>
+  <nav class="site-nav">
+    <a href="#">Home</a>
+    <a href="#">Services</a>
+    <a href="#">Events</a>
+    <a href="#">Speakers</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-eyebrow">Founder Profile · Fort Worth, Texas</div>
+    <h1 class="hero-name">SUSY<br><span>GORDON</span></h1>
+    <p class="hero-tagline">In pursuit of purpose.</p>
+    <p class="hero-title">
+      Founder & CEO · Mega Mission Media<br>
+      Media Producer · Digital Strategist · Storyteller<br>
+      30+ Years · Broadcasting, Tech & Entrepreneurship
+    </p>
+    <div class="hero-ctas">
+      <a href="https://calendly.com/susy-megamissionmedia/30min" class="btn-primary">Book with Susy</a>
+      <a href="https://megamissionmedia.com" class="btn-outline">Visit MMM</a>
+    </div>
+  </div>
+  <div class="hero-image">
+    <div class="gold-bar"></div>
+    <img src="Susy_Gordon2.png" alt="Susy Gordon — Founder & CEO, Mega Mission Media" />
+  </div>
+</section>
+
+<section class="video-section">
+  <p class="section-label">Becoming Blueprint</p>
+  <h2 class="section-title">She Left a $155K Salary<br>to Help the Lost Launch</h2>
+  <div class="video-wrapper">
+    <div class="video-embed">
+      <iframe src="https://www.youtube.com/embed/3yLCLKzeSNk" title="Susy Gordon — Becoming Blueprint" allowfullscreen></iframe>
+    </div>
+    <p class="video-caption">"God is the master of timelines — and you cannot change that."</p>
+  </div>
+</section>
+
+<section style="padding: 100px 0; border-bottom: 1px solid #222;">
+  <div class="story-section">
+
+    <!-- PILLAR 1: WHO I USED TO BE -->
+    <div class="story-grid" style="margin-bottom: 80px;">
+      <div class="story-sidebar">
+        <p class="section-label">Part One</p>
+        <h2 class="section-title">Who I<br>Used to<br>Be</h2>
+        <div class="gold-line"></div>
+        <p class="sidebar-quote">"Everything I learned, I bring with me."</p>
+      </div>
+      <div class="story-body">
+        <p>Susy Gordon's story begins in a high school television studio in Mesquite, Texas, where she fell in love with broadcasting, storytelling, and putting programming on the air. That spark ignited a decade-long career in major market media — from Univision and CBS Channel 11 in Dallas/Fort Worth to Clear Channel Radio, where she worked alongside legendary morning shows and met names that defined the industry.</p>
+        <p>To support a growing family, Susy made a calculated switch to tech. What followed was <strong>20 to 25 years of corporate climbing</strong> — Project Manager, Scrum Master, Agile Coach, SharePoint Admin, Director of Strategy and Delivery. She built teams, transformed organizations, and coached leaders across major corporations. At her peak, she was earning $155,000 a year.</p>
+        <div class="pull-quote">
+          <p>"Titles and income mean absolutely nothing during a hardship. That hardship is what led me to my pivot."</p>
+        </div>
+        <p>Then came the season that changed everything. The loss of her sister. Personal hardship. Addiction. Nine months of homelessness. The kind of crisis that strips away everything that felt permanent. Susy pivoted to rideshare — not as a plan, but as the only door open to her.</p>
+        <p>What looked like a step down was God repositioning her. <strong>Instead of behind a monitor directing teams, she was now behind a windshield meeting people</strong> — over 3,000 passengers who shared their stories, their dreams, and sometimes their expertise with her. One passenger became her boss and brought her back into corporate America — sober, clear-minded, and grateful.</p>
+      </div>
+    </div>
+
+    <!-- PILLAR 2: WHAT I'M BUILDING -->
+    <div class="story-grid" style="margin-bottom: 80px; padding-top: 80px; border-top: 1px solid #222;">
+      <div class="story-sidebar">
+        <p class="section-label">Part Two</p>
+        <h2 class="section-title">What I'm<br>Building</h2>
+        <div class="gold-line"></div>
+        <p class="sidebar-quote">"Media with a Mission. Content with a Calling."</p>
+      </div>
+      <div class="story-body">
+        <p>Mega Mission Media is a creative digital media agency helping businesses, founders, and professionals expand their digital presence — through websites, social media content, video production, and podcast support. But it is more than a service company. <strong>It is a platform built to amplify the stories that need to be heard.</strong></p>
+        <p>Every client Susy works with gets more than a deliverable. They get a partner who understands what it means to build something from nothing — because she is doing it too. She brings 10 years of broadcasting instinct and 25 years of tech strategy to every project, every profile, every piece of content she produces.</p>
+      </div>
+    </div>
+
+    <!-- PILLAR 3: WHY I'M BUILDING IT -->
+    <div class="story-grid" style="margin-bottom: 80px; padding-top: 80px; border-top: 1px solid #222;">
+      <div class="story-sidebar">
+        <p class="section-label">Part Three</p>
+        <h2 class="section-title">Why I'm<br>Building<br>It</h2>
+        <div class="gold-line"></div>
+        <p class="sidebar-quote">"I'm a solutionist. Always have been."</p>
+      </div>
+      <div class="story-body">
+        <p>In June 2025, Susy walked away from her corporate career — a $155,000 Director role — in full pursuit of purpose and faith expansion. It wasn't impulsive. It was inevitable. No corporate door would open. Every purpose door would.</p>
+        <p>She had spent 25 years solving problems for other people's organizations. She reshaped teams, implemented methodologies, and coached leaders. <strong>She was a solutionist by nature.</strong> And she finally turned that same instinct toward the problem she had lived herself.</p>
+        <div class="pull-quote">
+          <p>"I was the seeker. I lived the experience of wanting to start and not being able to find affordable, accessible guidance. Building this is my answer to the gap I personally suffered through."</p>
+        </div>
+        <p>She didn't set out to build a media company. She set out to follow what God was showing her — and what He showed her was a big, unsolved problem: <strong>people everywhere have stories, blueprints, and transformations that the world needs to hear, and no one is giving them the platform to share it.</strong> That's the problem Susy is solving.</p>
+      </div>
+    </div>
+
+    <!-- PILLAR 4: HOW I DID IT -->
+    <div class="story-grid" style="padding-top: 80px; border-top: 1px solid #222;">
+      <div class="story-sidebar">
+        <p class="section-label">Part Four</p>
+        <h2 class="section-title">How I<br>Did It</h2>
+        <div class="gold-line"></div>
+        <p class="sidebar-quote">"God said: just start calling."</p>
+      </div>
+      <div class="story-body">
+        <p>Two car wrecks in January and February 2026 grounded her vehicle — her mobile office, prayer closet, think tank, and conference room. Without the car, she was forced to look inward. She heard clearly: <em>look within, Susy, look within.</em></p>
+        <p>She started calling. She got on Yelp, found businesses without websites, and made <strong>30 cold calls in a single day.</strong> One person called back. She closed the deal. He is still her client today — and after she built his digital presence, his phone would not stop ringing.</p>
+        <div class="pull-quote">
+          <p>"God is the master of timelines. In my car, I learned about Claude. In my car, I found 1 Million Cups. Every door that mattered opened through my windshield."</p>
+        </div>
+        <p>A rideshare passenger in a 45-minute traffic jam introduced her to Claude Code. She went home and rebuilt her client's website in under 10 minutes. Another passenger introduced her to One Million Cups Fort Worth — which became her founding community. The car was never just transportation. It was the classroom.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="built-section">
+  <div class="built-inner">
+    <p class="section-label">What She Built</p>
+    <h2 class="section-title">The Startup Blueprint</h2>
+    <div style="margin-top: 60px;">
+      <div class="built-card" style="max-width: 640px;">
+        <div class="card-number">01</div>
+        <h3 class="card-title">Mega Mission Media</h3>
+        <p class="card-desc">A creative digital media agency helping small businesses and service professionals break through digital invisibility. Services include website builds, social media content, video production, and podcast support — combining 10 years of broadcasting instinct with 25 years of tech strategy.</p>
+        <p class="card-desc" style="margin-top: 16px; color: #777;">"My client called and said, 'Susy, my phone won't stop ringing.' That's what we solve."</p>
+        <span class="card-tag">For-Profit · Service Agency</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="timeline-section">
+  <p class="section-label">The Launch Timeline</p>
+  <h2 class="section-title">How She Did It</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-date">High School · Mesquite, TX</div>
+      <div class="timeline-event">First Broadcast</div>
+      <p class="timeline-detail">Puts programming on the air at Mesquite ISD's school TV station. Falls in love with storytelling and broadcasting. Dreams of becoming an international news reporter.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">Early Career · 10 Years</div>
+      <div class="timeline-event">Major Market Media</div>
+      <p class="timeline-detail">Univision Channel 23 (Master Control), CBS Channel 11 KTVT, Clear Channel Radio (Kid Kritic Morning Show, Magic 102, KCBS, The Edge). Meets legends. Falls in love with the industry.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">Corporate · 20–25 Years</div>
+      <div class="timeline-event">Tech Consulting Climb</div>
+      <p class="timeline-detail">Project Coordinator → Project Manager → Scrum Master → Agile Coach → Director of Strategy and Delivery. Builds and transforms teams across major corporations. Reaches $155,000 salary.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">The Pivot</div>
+      <div class="timeline-event">Hardship. Rideshare. Repositioning.</div>
+      <p class="timeline-detail">Personal loss, addiction, and homelessness strip away the corporate identity. Susy turns to rideshare. Over 3,000 passenger encounters become her classroom, her community, and her calling.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">June 2025</div>
+      <div class="timeline-event">Leaves Corporate for Good</div>
+      <p class="timeline-detail">Walks away from her Director role and $155,000 salary to pursue Mega Mission Media full time. No doors opened for corporate. Every door opened for purpose.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">January–February 2026</div>
+      <div class="timeline-event">Two Car Wrecks</div>
+      <p class="timeline-detail">Both wrecks ground her vehicle — her mobile office. Without the car, she is forced to look inward. She hears clearly: look within. She starts calling potential clients.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">March 2026</div>
+      <div class="timeline-event">First Client. First Revenue.</div>
+      <p class="timeline-detail">30 cold calls in one day. One callback. One closed deal. That client's phone started ringing and has not stopped. He is still her client today.</p>
+    </div>
+  </div>
+</section>
+
+<section class="stack-section">
+  <div class="stack-inner">
+    <p class="section-label">Tools & Tech</p>
+    <h2 class="section-title">The Startup Stack</h2>
+    <div style="margin-top: 32px; margin-bottom: 48px; border-left: 3px solid var(--teal); padding: 20px 28px; background: #0a1f1c;">
+      <p style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.1rem; color: var(--teal); line-height: 1.7; margin: 0;">
+        "When I walked away from corporate America, I didn't know how to use any of these. None of them. This stack is a testament to what being completely free looks like."
+      </p>
+      <p style="margin-top: 12px; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: #5EEAD4; opacity: 0.5;">— Susy Gordon, Founder</p>
+    </div>
+    <div class="stack-grid">
+      <div class="stack-item"><div class="stack-name">Claude / Claude Code</div><div class="stack-use">Website builds, content, AI execution</div></div>
+      <div class="stack-item"><div class="stack-name">ChatGPT</div><div class="stack-use">AI writing and ideation</div></div>
+      <div class="stack-item"><div class="stack-name">HeyGen</div><div class="stack-use">AI video creation</div></div>
+      <div class="stack-item"><div class="stack-name">Squarespace</div><div class="stack-use">Website hosting & payments</div></div>
+      <div class="stack-item"><div class="stack-name">Google Workspace</div><div class="stack-use">Business operations & email</div></div>
+      <div class="stack-item"><div class="stack-name">Calendly</div><div class="stack-use">Booking & scheduling</div></div>
+      <div class="stack-item"><div class="stack-name">CapCut</div><div class="stack-use">Video editing (annual subscription)</div></div>
+      <div class="stack-item"><div class="stack-name">YouTube</div><div class="stack-use">Video distribution</div></div>
+      <div class="stack-item"><div class="stack-name">Suno</div><div class="stack-use">AI music creation</div></div>
+      <div class="stack-item"><div class="stack-name">Sprout</div><div class="stack-use">Podcasting</div></div>
+      <div class="stack-item"><div class="stack-name">GitHub</div><div class="stack-use">Code repository & version control</div></div>
+      <div class="stack-item"><div class="stack-name">Vercel</div><div class="stack-use">Web deployment & hosting</div></div>
+      <div class="stack-item"><div class="stack-name">Opus Clip</div><div class="stack-use">Short-form video clips (planned)</div></div>
+      <div class="stack-item"><div class="stack-name">Camtasia</div><div class="stack-use">Screen recording & editing (planned)</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="wisdom-section">
+  <p class="section-label">Lessons & Wisdom</p>
+  <h2 class="section-title">What the Seeker Needs to Hear</h2>
+  <div class="wisdom-grid">
+    <div class="wisdom-card">
+      <p class="wisdom-q">Advice to your past self</p>
+      <p class="wisdom-a">"Start doing what you've never done to get the results you've never had. Search more for God. Let go of yourself."</p>
+    </div>
+    <div class="wisdom-card">
+      <p class="wisdom-q">What success means now</p>
+      <p class="wisdom-a">"Lights still on. Roof over my head. Kids are happy. God is pleased. Peace and joy are present. That is success."</p>
+    </div>
+    <div class="wisdom-card">
+      <p class="wisdom-q">To someone afraid to start</p>
+      <p class="wisdom-a">"Start. Just start. You are not going to know the entire plan. You will figure it out as you go. And if you need help — I can help you with that."</p>
+    </div>
+    <div class="wisdom-card">
+      <p class="wisdom-q">What had to change</p>
+      <p class="wisdom-a">"I am in control of absolutely nothing. Nobody is coming to save you. What I read in the Bible, I had to activate — by speaking it and giving it to someone else."</p>
+    </div>
+    <div class="wisdom-card">
+      <p class="wisdom-q">What people misunderstand</p>
+      <p class="wisdom-a">"Entrepreneurship is not expensive or exclusive or out of reach. Every person is born with a purpose. If other people can do it — why not me?"</p>
+    </div>
+    <div class="wisdom-card">
+      <p class="wisdom-q">What keeps her going</p>
+      <p class="wisdom-a">"My faith. There is no question. It's this sign right here. My faith keeps me going."</p>
+    </div>
+  </div>
+</section>
+
+<section class="open-section">
+  <p class="section-label">Collaboration</p>
+  <h2 class="section-title">Open To</h2>
+  <div class="open-pills">
+    <div class="open-pill">Mentorship</div>
+    <div class="open-pill">Partnerships</div>
+    <div class="open-pill">Interviews</div>
+    <div class="open-pill">Speaking Engagements</div>
+    <div class="open-pill">Client Work</div>
+  </div>
+</section>
+
+<section class="connect-section">
+  <div class="connect-inner">
+    <div class="connect-text">
+      <p class="section-label">Connect</p>
+      <h2 class="section-title">Let's Put Your<br>Business Out There</h2>
+      <p>Whether you need a website, social media content, video production, or just a conversation about where your business is headed — Susy's calendar is open.</p>
+      <a href="https://calendly.com/susy-megamissionmedia/30min" class="btn-black">Book a 30-Minute Call</a>
+    </div>
+    <div class="connect-details">
+      <div class="connect-item">
+        <div class="connect-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F0B429" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div><div class="connect-label">Location</div><div class="connect-value">Fort Worth, Texas</div></div>
+      </div>
+      <div class="connect-item">
+        <div class="connect-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F0B429" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.67 3.35 2 2 0 0 1 3.64 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 7.91a16 16 0 0 0 6 6l.77-.77a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <div><div class="connect-label">Phone</div><div class="connect-value"><a href="tel:8178608989">817-860-8989</a></div></div>
+      </div>
+      <div class="connect-item">
+        <div class="connect-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F0B429" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div><div class="connect-label">Email</div><div class="connect-value"><a href="mailto:susy@megamissionmedia.com">susy@megamissionmedia.com</a></div></div>
+      </div>
+      <div class="connect-item">
+        <div class="connect-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F0B429" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <div><div class="connect-label">Website</div><div class="connect-value"><a href="https://megamissionmedia.com">megamissionmedia.com</a></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tags-section">
+  <div class="tags-inner">
+    <p class="section-label">Profile Tags</p>
+    <div class="tags-wrap">
+      <span class="tag">Female Founder</span><span class="tag">Corporate Pivot</span><span class="tag">Media & Broadcasting</span><span class="tag">Digital Branding</span><span class="tag">Tech Background</span><span class="tag">Agile & Scrum</span><span class="tag">AI-Assisted Startup</span><span class="tag">Bootstrapped</span><span class="tag">Fort Worth TX</span><span class="tag">Faith-Led Transition</span><span class="tag">First-Generation Hispanic Founder</span><span class="tag">Startup After Hardship</span><span class="tag">Rideshare to Founder</span><span class="tag">Cold Calling Founder</span><span class="tag">Former CBS</span><span class="tag">Former Univision</span><span class="tag">Former Clear Channel</span><span class="tag">Podcast Founder</span><span class="tag">Website Builder</span><span class="tag">Entrepreneur Over 40</span>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-logo">Mega Mission Media</div>
+  <div class="footer-mission">Media with a Mission. Content with a Calling.</div>
+  <div class="footer-copy">© 2026 Mega Mission Media · Fort Worth, TX</div>
+</footer>
+
+</body>
+</html>

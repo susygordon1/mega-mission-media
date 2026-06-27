@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services — Mega Mission Media</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0a0a0a;
+    --gold: #F0B429;
+    --gold-dim: #a37c1c;
+    --white: #ffffff;
+    --gray: #aaaaaa;
+    --surface: #111111;
+    --border: #222222;
+    --teal: #5EEAD4;
+  }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 48px;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    background: var(--black);
+    z-index: 100;
+  }
+  .logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--gray);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-links a.active { color: var(--gold); }
+  .nav-cta {
+    display: inline-block;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 10px 22px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .nav-cta:hover { background: var(--gold); color: var(--black); }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 100px 48px 80px;
+    max-width: 1100px;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--border);
+  }
+  .eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(3.5rem, 9vw, 7rem);
+    line-height: 0.92;
+    letter-spacing: 0.02em;
+    margin-bottom: 30px;
+  }
+  .hero h1 span { color: var(--gold); }
+  .hero-tagline {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.25rem;
+    color: var(--gray);
+    max-width: 560px;
+  }
+
+  /* ── SHARED ── */
+  .section-rule {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 48px;
+  }
+  .section-rule::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  .category-eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  .category-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: 0.04em;
+    line-height: 1;
+    margin-bottom: 48px;
+  }
+
+  /* ── CATEGORY SECTIONS ── */
+  .category-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 48px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* ── SERVICE CARDS ── */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+  }
+  .service-card {
+    background: var(--surface);
+    padding: 44px 40px;
+    position: relative;
+    border: 1px solid var(--border);
+    transition: border-color 0.25s;
+  }
+  .service-card:hover { border-color: var(--gold-dim); }
+  .service-number {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 4rem;
+    color: #1a1a1a;
+    line-height: 1;
+    position: absolute;
+    top: 28px;
+    right: 28px;
+  }
+  .service-icon {
+    font-size: 1.8rem;
+    margin-bottom: 18px;
+    display: block;
+  }
+  .service-card h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.9rem;
+    letter-spacing: 0.04em;
+    color: var(--white);
+    margin-bottom: 6px;
+    line-height: 1.1;
+  }
+  .service-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--gold);
+    margin-bottom: 18px;
+  }
+  .service-card > p {
+    font-size: 0.9rem;
+    color: var(--gray);
+    line-height: 1.75;
+    margin-bottom: 24px;
+  }
+  .service-bullets {
+    list-style: none;
+    margin-bottom: 0;
+  }
+  .service-bullets li {
+    font-size: 0.82rem;
+    color: #888;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.5;
+  }
+  .service-bullets li:last-child { border-bottom: none; }
+  .service-bullets li::before {
+    content: '—';
+    color: var(--gold);
+    flex-shrink: 0;
+    font-size: 0.75rem;
+    margin-top: 2px;
+  }
+
+  /* ── FEATURED: RIDE & SHARE ── */
+  .service-card.featured {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .featured-tag {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--black);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    margin-bottom: 20px;
+  }
+  .framework {
+    background: #0d0d00;
+    border: 1px solid var(--gold-dim);
+    padding: 32px 36px;
+  }
+  .framework-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+  .framework-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .framework-step {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    font-size: 0.85rem;
+    color: #ccc;
+    line-height: 1.5;
+  }
+  .step-num {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.1rem;
+    color: var(--gold);
+    flex-shrink: 0;
+    width: 22px;
+    line-height: 1.2;
+  }
+  .virtual-note {
+    margin-top: 24px;
+    font-size: 0.78rem;
+    color: #555;
+    font-style: italic;
+  }
+
+  /* ── TEAL ACCENT CARD ── */
+  .service-card.teal-accent {
+    border-left: 3px solid var(--teal);
+  }
+  .service-card.teal-accent .service-subtitle {
+    color: var(--teal);
+  }
+
+  /* ── MISSION STRIP ── */
+  .mission-strip {
+    background: var(--gold);
+    padding: 80px 48px;
+    text-align: center;
+  }
+  .mission-strip h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(2rem, 5vw, 3.8rem);
+    color: var(--black);
+    letter-spacing: 0.04em;
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+  .mission-strip p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: #333;
+    font-size: 1.1rem;
+    margin-bottom: 32px;
+  }
+  .btn-primary {
+    display: inline-block;
+    background: var(--black);
+    color: var(--gold);
+    padding: 16px 40px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .btn-primary:hover { opacity: 0.85; }
+
+  /* ── FOOTER ── */
+  .footer-network {
+    padding: 28px 48px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .network-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #444;
+  }
+  .network-links {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+  .network-links a {
+    font-size: 0.82rem;
+    color: var(--gray);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .network-links a:hover { color: var(--gold); }
+  .network-links a.current { color: var(--gold); font-weight: 600; }
+  .network-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #444;
+  }
+  .footer-copy {
+    padding: 16px 48px;
+    border-top: 1px solid #1a1a1a;
+  }
+  .footer-copy p {
+    font-size: 0.7rem;
+    color: #333;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .hero { padding: 60px 24px 50px; }
+    .category-section { padding: 60px 24px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .service-card.featured { grid-template-columns: 1fr; gap: 32px; }
+    .mission-strip { padding: 60px 24px; }
+    .footer-network, .footer-copy { padding: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- HDR · SHARED HEADER — NAV + CTA BUTTON                    -->
+<!-- ============================================================ -->
+<!-- HDR-NAV · NAVIGATION BAR -->
+<nav>
+  <a href="index.html" class="logo"><img src="MMM_Logo.png" alt="Mega Mission Media" style="height: 52px; width: auto; display: block;" /></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html" class="active">Services</a></li>
+    <li><a href="events.html">Events</a></li>
+  </ul>
+  <a href="tel:8178608989" class="nav-cta">Call for Consultation &nbsp;·&nbsp; 817-860-8989</a>
+</nav>
+
+<!-- ============================================================ -->
+<!-- P02-B01 · HERO — CONTENT WITH A CALLING                   -->
+<!-- ============================================================ -->
+<section class="hero">
+  <p class="eyebrow">What We Do</p>
+  <h1>CONTENT<br>WITH A<br><span>CALLING.</span></h1>
+  <p class="hero-tagline">We come to you. We tell your story. We put your business out there — on every screen that matters.</p>
+</section>
+
+<!-- ============================================================ -->
+<!-- P02-B02 · CATEGORY 01 — MEDIA PRODUCTION                  -->
+<!-- ============================================================ -->
+<section class="category-section">
+  <p class="category-eyebrow" style="color: var(--gold);">Category 01</p>
+  <h2 class="category-title">Media Production</h2>
+
+  <div class="services-grid">
+
+    <!-- FEATURED: RIDE & SHARE -->
+    <div class="service-card featured">
+      <div>
+        <div class="featured-tag">Signature Service</div>
+        <span class="service-icon">🚗</span>
+        <h2>RIDE & SHARE INTERVIEW</h2>
+        <p class="service-subtitle">The front seat is for sale.</p>
+        <p>Your story. My car. Your asset. Whether you're a founder, entrepreneur, professional, or ministry — if you have a story and a business to put out there, this is your seat. We capture your interview in a moving vehicle, produce it to professional broadcast quality, and hand you a video asset that is fully yours to use anywhere.</p>
+        <ul class="service-bullets">
+          <li>In-car interview filmed in a moving vehicle — cinematic, authentic, uniquely MMM</li>
+          <li>Professional editing and broadcast-quality production</li>
+          <li>Full-length video asset delivered to you — you own every frame</li>
+          <li>Social media clips cut and ready to post</li>
+          <li>Featured on the MMM platform for additional amplification</li>
+        </ul>
+        <p class="virtual-note">Virtual sessions available by request.</p>
+      </div>
+      <div>
+        <div class="framework">
+          <div class="framework-label">The Story Framework</div>
+          <div class="framework-steps">
+            <div class="framework-step">
+              <span class="step-num">01</span>
+              <span><strong style="color:#fff">Who You Were</strong> — The origin. Your life before this business became your calling.</span>
+            </div>
+            <div class="framework-step">
+              <span class="step-num">02</span>
+              <span><strong style="color:#fff">What You're Building</strong> — The vision. What it is and who it serves.</span>
+            </div>
+            <div class="framework-step">
+              <span class="step-num">03</span>
+              <span><strong style="color:#fff">Why You're Building It</strong> — The mission. The deeper thing that drives it.</span>
+            </div>
+            <div class="framework-step">
+              <span class="step-num">04</span>
+              <span><strong style="color:#fff">How You're Building It</strong> — The meat. The real strategy, the grit, the day-to-day.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WEBSITE BUILD -->
+    <div class="service-card">
+      <div class="service-number">02</div>
+      <span class="service-icon">💻</span>
+      <h2>WEBSITE BUILD</h2>
+      <p class="service-subtitle">Your digital home, built to last.</p>
+      <p>Custom websites that reflect who you are and convert visitors into clients. Clean design, mobile-first, built for the way your audience finds you today.</p>
+      <ul class="service-bullets">
+        <li>Custom multi-page design in your brand colors and voice</li>
+        <li>Mobile-responsive, visibility-focused build</li>
+        <li>SEO foundations and contact form setup</li>
+        <li>Booking and calendar integration</li>
+        <li>Builds, refreshes, and maintenance available</li>
+      </ul>
+    </div>
+
+    <!-- SOCIAL MEDIA -->
+    <div class="service-card teal-accent">
+      <div class="service-number">03</div>
+      <span class="service-icon">📲</span>
+      <h2>SOCIAL MEDIA CONTENT & PROFILE OPTIMIZATION</h2>
+      <p class="service-subtitle">AI-powered. Brand-driven. Consistently you.</p>
+      <p>Monthly social media content created with cutting-edge AI tools — and if your profiles need work, we handle that too. From creating your business page to cleaning up how your LinkedIn reads, we make sure every platform represents you well.</p>
+      <ul class="service-bullets">
+        <li>Monthly content packages — graphics, captions, strategy</li>
+        <li>AI-generated content tailored to your brand voice</li>
+        <li>Business page creation across platforms</li>
+        <li>LinkedIn, Facebook, Instagram profile optimization</li>
+        <li>Platform scheduling and posting</li>
+      </ul>
+    </div>
+
+    <!-- MOBILE PODCASTING -->
+    <div class="service-card">
+      <div class="service-number">04</div>
+      <span class="service-icon">🎙️</span>
+      <h2>MOBILE PODCASTING</h2>
+      <p class="service-subtitle">Your studio is wherever you are.</p>
+      <p>No studio needed. We come to your office, set up, and produce a full podcast series — you just show up and talk. Recording, editing, and publishing all handled. We can also sit with you and teach you how to run it yourself.</p>
+      <ul class="service-bullets">
+        <li>On-site setup at your location</li>
+        <li>Full recording and professional edit</li>
+        <li>Platform distribution — Spotify, Apple, YouTube</li>
+        <li>Show branding and cover art</li>
+        <li>Episode series packages available</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- P02-B03 · CATEGORY 02 — BACK OFFICE & OPERATIONS SUPPORT  -->
+<!-- ============================================================ -->
+<section class="category-section">
+  <p class="category-eyebrow" style="color: var(--teal);">Category 02</p>
+  <h2 class="category-title">Back Office & Operations Support</h2>
+
+  <div class="services-grid">
+
+    <!-- GOOGLE WORKSPACE -->
+    <div class="service-card teal-accent">
+      <div class="service-number">01</div>
+      <span class="service-icon">📧</span>
+      <h2>GOOGLE WORKSPACE SETUP & ADMIN</h2>
+      <p class="service-subtitle">Your business running on the right tools.</p>
+      <p>If you are still running your business out of a personal Gmail, it is time to upgrade. We set up, configure, and manage Google Workspace so your business looks and operates professionally from day one.</p>
+      <ul class="service-bullets">
+        <li>Google Workspace account setup and configuration</li>
+        <li>Professional email setup — yourname@yourbusiness.com</li>
+        <li>Google Drive, Calendar, and Meet organization</li>
+        <li>Ongoing admin support available</li>
+      </ul>
+    </div>
+
+    <!-- PROJECT MANAGEMENT -->
+    <div class="service-card teal-accent">
+      <div class="service-number">02</div>
+      <span class="service-icon">📋</span>
+      <h2>PROJECT MANAGEMENT</h2>
+      <p class="service-subtitle">Someone who keeps it all moving.</p>
+      <p>You have the vision. We keep the work on track. Whether you need help managing a launch, a client project, or your own internal operations — we bring structure, timelines, and accountability to everything you are building.</p>
+      <ul class="service-bullets">
+        <li>Project scoping and timeline development</li>
+        <li>Task tracking and progress reporting</li>
+        <li>Vendor and contractor coordination</li>
+        <li>Agile and Scrum methodology available</li>
+      </ul>
+    </div>
+
+    <!-- PROCESS IMPROVEMENT -->
+    <div class="service-card teal-accent">
+      <div class="service-number">03</div>
+      <span class="service-icon">⚙️</span>
+      <h2>PROCESS IMPROVEMENT</h2>
+      <p class="service-subtitle">Stop doing it the hard way.</p>
+      <p>If something in your business feels like it takes too long, costs too much, or keeps breaking down — we find it, fix it, and build a better way. Twenty-five years of corporate process transformation brought to your business.</p>
+      <ul class="service-bullets">
+        <li>Current process review and gap analysis</li>
+        <li>Bottleneck identification and resolution</li>
+        <li>Documented process builds and SOPs</li>
+        <li>Team training on new processes</li>
+      </ul>
+    </div>
+
+    <!-- WORKFLOW & AUTOMATION -->
+    <div class="service-card teal-accent">
+      <div class="service-number">04</div>
+      <span class="service-icon">🔄</span>
+      <h2>WORKFLOW DESIGN & AUTOMATION</h2>
+      <p class="service-subtitle">Your business running after hours.</p>
+      <p>We map out how your business actually runs — then we automate the parts that do not need a human touch. From intake forms to follow-up sequences, we build workflows that work while you sleep.</p>
+      <ul class="service-bullets">
+        <li>End-to-end workflow mapping</li>
+        <li>Automation setup — forms, triggers, sequences</li>
+        <li>Google Workspace and tool integrations</li>
+        <li>Ongoing optimization and support</li>
+      </ul>
+    </div>
+
+    <!-- VIRTUAL ADMIN -->
+    <div class="service-card teal-accent" style="grid-column: 1 / -1; max-width: 640px;">
+      <div class="service-number">05</div>
+      <span class="service-icon">🖥️</span>
+      <h2>VIRTUAL ADMIN SUPPORT</h2>
+      <p class="service-subtitle">Your behind-the-scenes partner.</p>
+      <p>Need someone who can handle the back end while you focus on the front? From scheduling and correspondence to document management and platform upkeep — we keep your operation running clean and professional.</p>
+      <ul class="service-bullets">
+        <li>Calendar and scheduling management</li>
+        <li>Document creation and organization</li>
+        <li>Email and correspondence support</li>
+        <li>Platform and tool maintenance</li>
+        <li>Available on retainer or project basis</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- MISSION STRIP -->
+<section class="mission-strip">
+  <h2>LET'S PUT YOUR<br>BUSINESS OUT THERE.</h2>
+  <p>No pricing listed. Call to claim your seat.</p>
+  <a href="tel:8178608989" class="btn-primary">Call for Consultation &nbsp;·&nbsp; 817-860-8989</a>
+</section>
+
+<!-- ============================================================ -->
+<!-- FTR · SHARED FOOTER — THE NETWORK + COPYRIGHT             -->
+<!-- ============================================================ -->
+<div class="footer-network">
+  <span class="network-label">The Network</span>
+  <div class="network-links">
+    <a href="https://susygordon.com">susygordon.com</a>
+    <div class="network-dot"></div>
+    <a href="https://megamissionmedia.com" class="current">megamissionmedia.com</a>
+  </div>
+</div>
+<div class="footer-copy">
+  <p>© 2026 Mega Mission Media &nbsp;·&nbsp; Fort Worth, TX &nbsp;·&nbsp; All Rights Reserved &nbsp;·&nbsp; Built in a Car. Born in Obedience.</p>
+</div>
+
+</body>
+</html>
