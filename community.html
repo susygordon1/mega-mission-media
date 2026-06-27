@@ -109,38 +109,6 @@
     line-height: 1.75;
   }
 
-  /* ── FOUNDING MEMBERS STRIP ── */
-  .founding-strip {
-    background: #0d0d00;
-    border-top: 1px solid var(--gold-dim);
-    border-bottom: 1px solid var(--gold-dim);
-    padding: 20px 48px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-  .founding-label {
-    font-size: 0.68rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--gold);
-    white-space: nowrap;
-    opacity: 0.8;
-  }
-  .founding-line {
-    flex: 1;
-    height: 1px;
-    background: var(--gold-dim);
-    opacity: 0.4;
-  }
-  .founding-count {
-    font-family: 'Orbitron', sans-serif;
-    font-weight: 700;
-    font-size: 0.9rem;
-    color: var(--gold);
-    white-space: nowrap;
-  }
-
   /* ── COMMUNITY GRID ── */
   .community-section {
     max-width: 1100px;
@@ -165,6 +133,7 @@
     height: 1px;
     background: var(--border);
   }
+
   .community-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -183,124 +152,92 @@
   }
   .member-card:hover { border-color: var(--gold); }
   .member-card:hover .card-arrow { opacity: 1; transform: translateX(0); }
+  .member-card:hover .card-photo { transform: scale(1.03); }
+
+  /* ── CARD IMAGE ── */
   .card-top {
     position: relative;
-    height: 200px;
+    height: 320px;
     background: #1a1a1a;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     overflow: hidden;
   }
   .card-top::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.8) 100%);
+    background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.85) 100%);
+    z-index: 1;
   }
   .card-photo {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center top;
-  }
-  .card-photo-placeholder {
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    border: 2px solid var(--gold);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0.3;
+    object-position: center 20%;
+    transition: transform 0.4s ease;
+    display: block;
   }
   .member-number {
     position: absolute;
-    top: 16px;
+    bottom: 16px;
     left: 20px;
     font-family: 'Orbitron', sans-serif;
     font-weight: 900;
-    font-size: 3rem;
-    color: rgba(240,180,41,0.15);
+    font-size: 2rem;
+    color: rgba(240,180,41,0.5);
     line-height: 1;
-    z-index: 1;
+    z-index: 2;
   }
-  .founding-badge {
-    position: absolute;
-    top: 16px;
-    right: 16px;
-    background: var(--gold);
-    color: var(--black);
-    font-size: 0.62rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    padding: 4px 10px;
-    z-index: 1;
-  }
+
+  /* ── CARD BODY ── */
   .card-body {
-    padding: 28px 28px 24px;
+    padding: 24px 28px 22px;
     border-top: 3px solid var(--gold);
   }
   .card-name {
     font-family: 'Orbitron', sans-serif;
     font-weight: 700;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     letter-spacing: 0.04em;
     color: var(--white);
     margin-bottom: 4px;
     line-height: 1.2;
   }
   .card-company {
-    font-size: 0.78rem;
+    font-size: 0.72rem;
     color: var(--gold);
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     font-weight: 600;
   }
   .card-tagline {
     font-family: 'Playfair Display', serif;
     font-style: italic;
-    font-size: 0.92rem;
+    font-size: 0.9rem;
     color: var(--teal);
-    margin-bottom: 16px;
+    margin-bottom: 10px;
     line-height: 1.5;
   }
   .card-desc {
-    font-size: 0.82rem;
+    font-size: 0.8rem;
     color: #777;
-    line-height: 1.65;
-    margin-bottom: 20px;
-  }
-  .card-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-bottom: 20px;
-  }
-  .card-tag {
-    font-size: 0.65rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: #555;
-    border: 1px solid #2a2a2a;
-    padding: 4px 10px;
+    line-height: 1.6;
+    margin-bottom: 18px;
   }
   .card-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 16px;
+    padding-top: 14px;
     border-top: 1px solid var(--border);
   }
   .card-location {
-    font-size: 0.72rem;
+    font-size: 0.7rem;
     color: #555;
     letter-spacing: 0.06em;
   }
   .card-arrow {
-    font-size: 0.78rem;
+    font-size: 0.75rem;
     color: var(--gold);
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -342,7 +279,7 @@
     margin-bottom: 20px;
     line-height: 1.6;
   }
-  .join-text .join-body {
+  .join-body {
     font-family: 'DM Sans', sans-serif;
     font-style: normal;
     color: var(--gray);
@@ -411,23 +348,9 @@
     flex-wrap: wrap;
     gap: 16px;
   }
-  .network-label {
-    font-size: 0.68rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: #444;
-  }
-  .network-links {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-  }
-  .network-links a {
-    font-size: 0.82rem;
-    color: var(--gray);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
+  .network-label { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: #444; }
+  .network-links { display: flex; align-items: center; gap: 24px; }
+  .network-links a { font-size: 0.82rem; color: var(--gray); text-decoration: none; transition: color 0.2s; }
   .network-links a:hover { color: var(--gold); }
   .network-links a.current { color: var(--gold); font-weight: 600; }
   .network-dot { width: 4px; height: 4px; border-radius: 50%; background: #444; }
@@ -441,8 +364,8 @@
     .hero, .community-section, .join-section { padding: 60px 24px; }
     .community-grid { grid-template-columns: 1fr; }
     .join-inner { grid-template-columns: 1fr; gap: 48px; }
-    .founding-strip { padding: 16px 24px; }
     .footer-network, .footer-copy { padding: 24px; }
+    .card-top { height: 260px; }
   }
 </style>
 </head>
@@ -452,7 +375,7 @@
 <!-- HDR · SHARED HEADER — NAV + CTA BUTTON                    -->
 <!-- ============================================================ -->
 <nav>
-  <a href="index.html"><img src="MMM_Logo.png" alt="Mega Mission Media" style="height: 52px; width: auto; display: block;" /></a>
+  <a href="index.html"><img src="MMM_Logo.png" alt="Mega Mission Media" style="height: 52px; width: auto; display: block; mix-blend-mode: lighten;" /></a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="services.html">Services</a></li>
@@ -469,43 +392,27 @@
   <p class="eyebrow">Mega Mission Media · The Community</p>
   <h1>THE<br><span>COMMUNITY</span></h1>
   <p class="hero-tagline">Every card tells a story. Every story builds the mission.</p>
-  <p class="hero-body">These are the founders, professionals, and difference-makers who are part of the Mega Mission Media community. Each profile is a digital business card — a full story of who they are, what they built, and how they did it. Browse the community. Find your next connection.</p>
+  <p class="hero-body">These are the founders, professionals, and difference-makers who are part of the Mega Mission Media community. Browse the community. Find your next connection.</p>
 </section>
 
 <!-- ============================================================ -->
-<!-- P04-B02 · FOUNDING STRIP — MEMBER COUNT + LABEL          -->
-<!-- ============================================================ -->
-<div class="founding-strip">
-  <span class="founding-label">Founding Members</span>
-  <div class="founding-line"></div>
-  <span class="founding-count">4 Members &nbsp;·&nbsp; Growing</span>
-</div>
-
-<!-- ============================================================ -->
-<!-- P04-B03 · COMMUNITY GRID — MEMBER CARDS                   -->
+<!-- P04-B02 · COMMUNITY GRID — MEMBER CARDS                   -->
 <!-- ============================================================ -->
 <section class="community-section">
-  <div class="section-rule">Meet the Community</div>
+  <div class="section-rule">Know Your Community</div>
   <div class="community-grid">
 
     <!-- SUSY GORDON -->
-    <a href="susy-gordon.html" class="member-card">
+    <a href="susy-gordon-profile.html" class="member-card">
       <div class="card-top">
         <span class="member-number">01</span>
-        <span class="founding-badge">Founding Member</span>
-        <img src="Susy_Gordon2.png" alt="Susy Gordon" class="card-photo" />
+        <img src="Susy_Gordon2.png" alt="Susy Gordon" class="card-photo" style="object-position: center 15%;" />
       </div>
       <div class="card-body">
         <div class="card-name">Susy Gordon</div>
         <div class="card-company">Mega Mission Media</div>
         <div class="card-tagline">In pursuit of purpose.</div>
-        <p class="card-desc">Founder & CEO of Mega Mission Media. 10 years in broadcast media. 25 years in tech consulting. Left a $155K salary to help the lost launch.</p>
-        <div class="card-tags">
-          <span class="card-tag">Media Production</span>
-          <span class="card-tag">Website Build</span>
-          <span class="card-tag">Faith-Driven</span>
-          <span class="card-tag">Fort Worth TX</span>
-        </div>
+        <p class="card-desc">Founder & CEO. Left a $155K salary to help the lost launch.</p>
         <div class="card-footer">
           <span class="card-location">Fort Worth, Texas</span>
           <span class="card-arrow">View Profile →</span>
@@ -514,27 +421,16 @@
     </a>
 
     <!-- CARRIE CARTER -->
-    <a href="carrie-carter.html" class="member-card">
+    <a href="carrie-carter-profile.html" class="member-card">
       <div class="card-top">
         <span class="member-number">02</span>
-        <span class="founding-badge">Founding Member</span>
-        <div class="card-photo-placeholder">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#F0B429" stroke-width="1">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
-          </svg>
-        </div>
+        <img src="Carrie_Carter.jpg" alt="Carrie Carter" class="card-photo" style="object-position: center 20%;" />
       </div>
       <div class="card-body">
         <div class="card-name">Carrie Carter</div>
         <div class="card-company">Cowtown Tour Company</div>
         <div class="card-tagline">Always find the silver lining.</div>
-        <p class="card-desc">Born and raised in Fort Worth. 25 years in travel tech. Two layoffs. One mini bus with longhorns on the front — showing the world what Fort Worth is really made of.</p>
-        <div class="card-tags">
-          <span class="card-tag">Tourism</span>
-          <span class="card-tag">Experiential</span>
-          <span class="card-tag">Fort Worth TX</span>
-          <span class="card-tag">World Cup 2026</span>
-        </div>
+        <p class="card-desc">Born and raised in Fort Worth. Showing the world what this city is really made of.</p>
         <div class="card-footer">
           <span class="card-location">Fort Worth, Texas</span>
           <span class="card-arrow">View Profile →</span>
@@ -543,27 +439,16 @@
     </a>
 
     <!-- LENA KILLION -->
-    <a href="lena-killion.html" class="member-card">
+    <a href="lena-killion-profile.html" class="member-card">
       <div class="card-top">
         <span class="member-number">03</span>
-        <span class="founding-badge">Founding Member</span>
-        <div class="card-photo-placeholder">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#F0B429" stroke-width="1">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
-          </svg>
-        </div>
+        <img src="Lena_Killion.jpg" alt="Lena Killion" class="card-photo" style="object-position: center 10%;" />
       </div>
       <div class="card-body">
         <div class="card-name">Lena Killion</div>
         <div class="card-company">MLK Pre Arrangements</div>
         <div class="card-tagline">"You've got your ducks in a row."</div>
-        <p class="card-desc">Theater major. Bodybuilder. Aerospace procurement. Now an independent funeral pre-planning specialist protecting families across Texas and beyond — before they ever need it.</p>
-        <div class="card-tags">
-          <span class="card-tag">Pre-Planning</span>
-          <span class="card-tag">Veterans Specialist</span>
-          <span class="card-tag">Notary</span>
-          <span class="card-tag">Fort Worth TX</span>
-        </div>
+        <p class="card-desc">Independent funeral pre-planning specialist. Protecting families before they ever need it.</p>
         <div class="card-footer">
           <span class="card-location">Fort Worth, Texas</span>
           <span class="card-arrow">View Profile →</span>
@@ -572,27 +457,16 @@
     </a>
 
     <!-- YOEL ZEHAIE -->
-    <a href="yoel-zehaie.html" class="member-card">
+    <a href="yoel-zehaie-profile.html" class="member-card">
       <div class="card-top">
         <span class="member-number">04</span>
-        <span class="founding-badge">Founding Member</span>
-        <div class="card-photo-placeholder">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#F0B429" stroke-width="1">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
-          </svg>
-        </div>
+        <img src="Yoel_Zehaie.png" alt="Yoel Zehaie" class="card-photo" style="object-position: center 15%;" />
       </div>
       <div class="card-body">
         <div class="card-name">Yoel Zehaie</div>
         <div class="card-company">Call Your Well Now</div>
         <div class="card-tagline">Never give up until we get the outcome we want.</div>
-        <p class="card-desc">DFW attorney practicing family law, criminal law, and civil litigation. He answers his own calls. He fights the cases others walk away from. When it matters most — don't go at it alone.</p>
-        <div class="card-tags">
-          <span class="card-tag">Family Law</span>
-          <span class="card-tag">Criminal Law</span>
-          <span class="card-tag">Civil Litigation</span>
-          <span class="card-tag">Dallas-Fort Worth</span>
-        </div>
+        <p class="card-desc">DFW attorney. Family law, criminal law, civil litigation. When it matters most — don't go at it alone.</p>
         <div class="card-footer">
           <span class="card-location">Dallas / Fort Worth, Texas</span>
           <span class="card-arrow">View Profile →</span>
@@ -604,7 +478,7 @@
 </section>
 
 <!-- ============================================================ -->
-<!-- P04-B04 · JOIN — WANT YOUR CARD ON HERE?                  -->
+<!-- P04-B03 · JOIN — WANT YOUR CARD ON HERE?                  -->
 <!-- ============================================================ -->
 <section class="join-section">
   <div class="join-inner">
