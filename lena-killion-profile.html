@@ -424,6 +424,25 @@
     nav img { height: 36px !important; }
   }
 
+
+  .footer-network {
+    padding: 28px 48px;
+    border-top: 1px solid #222;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .network-label { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: #444; }
+  .network-links { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .network-links a { font-size: 0.82rem; color: #aaa; text-decoration: none; transition: color 0.2s; }
+  .network-links a:hover { color: #F0B429; }
+  .network-links a.current { color: #F0B429; font-weight: 600; }
+  .network-dot { width: 4px; height: 4px; border-radius: 50%; background: #444; }
+  .footer-copy { padding: 16px 48px; border-top: 1px solid #1a1a1a; }
+  .footer-copy p { font-size: 0.7rem; color: #333; letter-spacing: 0.08em; text-transform: uppercase; text-align: center; }
+
 </style>
 </head>
 <body>
@@ -779,11 +798,19 @@
   </div>
 </section>
 
-<footer class="footer">
-  <div class="footer-logo">Mega Mission Media</div>
-  <div class="footer-mission">Media with a Mission. Content with a Calling.</div>
-  <div class="footer-copy">© 2026 Mega Mission Media · Fort Worth, TX</div>
-</footer>
+<div class="footer-network">
+  <span class="network-label">The Network</span>
+  <div class="network-links">
+    <a href="https://susygordon.com">susygordon.com</a>
+    <div class="network-dot"></div>
+    <a href="https://megamissionmedia.com" class="current">megamissionmedia.com</a>
+    <div class="network-dot"></div>
+    <a href="https://joyridesftw.com">joyridesftw.com</a>
+  </div>
+</div>
+<div class="footer-copy">
+  <p>© 2026 Mega Mission Media &nbsp;·&nbsp; Fort Worth, TX &nbsp;·&nbsp; A production company built in a car. &nbsp;·&nbsp; Built in a Car. Born in Obedience.</p>
+</div>
 
 
 <script>
