@@ -236,10 +236,23 @@
   /* ── HERO ── */
   .hero {
     position: relative;
-    min-height: 72vh;
+    min-height: 82vh;
+    display: grid;
+    grid-template-columns: minmax(320px, 42%) 1fr;
+    overflow: hidden;
+    background: #000;
+  }
+  .hero-text-panel {
+    position: relative;
+    z-index: 2;
+    padding: 60px 56px 60px 48px;
     display: flex;
-    align-items: flex-end;
-    padding: 0 48px 64px;
+    flex-direction: column;
+    justify-content: center;
+    background: #000;
+  }
+  .hero-image-panel {
+    position: relative;
     overflow: hidden;
   }
   .hero-bg {
@@ -247,19 +260,19 @@
     inset: 0;
     background-image: url('susy_office.png');
     background-size: cover;
-    background-position: center 15%;
-    z-index: 0;
+    background-position: 75% 22%;
+    clip-path: polygon(9% 0, 100% 0, 100% 100%, 0% 100%);
   }
   .hero-bg::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.94) 0%, rgba(0,0,0,0.55) 55%, rgba(0,0,0,0.3) 100%);
+    background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 35%);
   }
   .hero-content {
     position: relative;
     z-index: 1;
-    max-width: 800px;
+    max-width: 560px;
   }
   .on-air {
     display: flex;
@@ -908,8 +921,8 @@
   /* ── TABLET (max 1024px) ── */
   @media (max-width: 1024px) {
     .hero { grid-template-columns: 1fr; min-height: auto; }
-    .hero-text { padding: 60px 32px 40px; }
-    .hero-image { display: none; }
+    .hero-text-panel { padding: 60px 32px 40px; }
+    .hero-image-panel { display: none; }
     .who-inner { grid-template-columns: 1fr; gap: 40px; }
     .services-teaser-grid { grid-template-columns: repeat(2, 1fr); }
     .guests-grid { grid-template-columns: repeat(2, 1fr); }
@@ -934,8 +947,8 @@
 
     /* Hero */
     .hero { grid-template-columns: 1fr !important; min-height: auto !important; }
-    .hero-text { padding: 48px 20px 40px !important; }
-    .hero-image { display: none !important; }
+    .hero-text-panel { padding: 48px 20px 40px !important; }
+    .hero-image-panel { display: none !important; }
     .hero-name { font-size: clamp(3rem, 12vw, 4.5rem) !important; }
     .hero h1 { font-size: clamp(2.8rem, 11vw, 4rem) !important; }
     .hero-ctas { flex-direction: column !important; gap: 12px !important; }
@@ -1107,12 +1120,16 @@
 <!-- P01-B01 · HERO — YOUR VISION. OUR MISSION.                -->
 <!-- ============================================================ -->
 <section class="hero" id="home">
-  <div class="hero-bg"></div>
-  <div class="hero-content">
-    <div class="on-air"><div class="on-air-dot"></div> On Air — Fort Worth, TX</div>
-    <h1>YOUR VISION.<br><span>OUR MISSION.</span></h1>
-    <p class="hero-sub">Let's put your business out there.</p>
-    <p class="hero-caption">Faith-Based Media Network &nbsp;·&nbsp; Fort Worth, TX</p>
+  <div class="hero-text-panel">
+    <div class="hero-content">
+      <div class="on-air"><div class="on-air-dot"></div> On Air — Fort Worth, TX</div>
+      <h1>YOUR VISION.<br><span>MY MISSION.</span></h1>
+      <p class="hero-sub">Let's put your business out there.</p>
+      <p class="hero-caption">Faith-Based Media Network &nbsp;·&nbsp; Fort Worth, TX</p>
+    </div>
+  </div>
+  <div class="hero-image-panel">
+    <div class="hero-bg"></div>
   </div>
 </section>
 
@@ -1212,7 +1229,9 @@
     <div class="portfolio-grid">
 
       <div class="portfolio-card">
-        <div class="portfolio-thumb" style="display:flex; align-items:center; justify-content:center; color:#444; font-family:'Orbitron',sans-serif; font-size:0.85rem; letter-spacing:0.1em;">4TEC ELECTRIC</div>
+        <a href="https://www.4tecelectric.com/" target="_blank" rel="noopener">
+          <img class="portfolio-thumb" src="4tec-website-hero.png" alt="4Tec Electric">
+        </a>
         <div class="portfolio-body">
           <h3>4Tec Electric</h3>
           <p>Thomas Delgado</p>
@@ -1237,7 +1256,9 @@
       </div>
 
       <div class="portfolio-card">
-        <img class="portfolio-thumb" src="https://img.youtube.com/vi/iUCYARj7i9U/hqdefault.jpg" alt="Call Your Well Now">
+        <a href="https://callyoelnow.com" target="_blank" rel="noopener">
+          <img class="portfolio-thumb" src="yoel-website-hero.png" alt="Zehaie Law — Call Yoel Now">
+        </a>
         <div class="portfolio-body">
           <h3>Call Yoel Now</h3>
           <p>Yoel Zehaie</p>
