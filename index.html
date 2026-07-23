@@ -1358,7 +1358,9 @@
     border: 1px solid var(--border);
     padding: 28px 26px;
     text-align: center;
+    transition: border-color 0.2s, transform 0.2s;
   }
+  .roadmap-teaser-card:hover { border-color: var(--gold-dim); transform: translateY(-2px); }
   .roadmap-teaser-card h3 {
     font-family: 'Orbitron', sans-serif;
     font-size: 1.15rem;
@@ -1516,40 +1518,57 @@
   </div>
 </section>
 <section class="who-section">
-  <div class="who-inner" style="grid-template-columns: 1fr; max-width: 800px;">
+  <div class="who-inner" style="grid-template-columns: 1fr; max-width: 900px;">
     <div class="who-left">
-      <p class="block-eyebrow">Mega Mission Media — Who I Am &amp; What I Do</p>
-      <h2 class="block-title"><span style="color:var(--gold);">Business Consulting</span> &amp; <span style="color:var(--white);">Digital Media</span></h2>
-      <p>I'm a one-person, full-service shop based in Fort Worth, Texas — and what I do comes down to two things: I help you run your business better, and I help you tell its story.</p>
-      <p>That means team assessments, process and change management, and back office support on one side — and Ride &amp; Share interviews, website builds, podcasting, and social content on the other. One person. Every angle. Built in a car, born in obedience.</p>
+      <p class="block-eyebrow">Mega Mission — What We Do</p>
+      <p class="roadmap-lead" style="font-family:'Orbitron',sans-serif; font-style:normal; color:var(--gold); font-size:1.3rem; letter-spacing:0.03em; margin-bottom:0;">Three Phases. One Mission.</p>
     </div>
   </div>
 </section>
 <section class="roadmap-teaser-section" id="roadmap-teaser">
   <div class="roadmap-teaser-inner">
-    <p class="block-eyebrow" style="color:var(--gold);">Your Vision. Our Mission.</p>
-    <h2 class="block-title" style="margin-bottom:8px;">Three Phases. One Mission.</h2>
-    <p class="category-sub" style="margin-bottom:0;">We don't just build websites. We build digital businesses.</p>
 
+    <p class="category-eyebrow" style="color: var(--teal); margin-bottom:6px;">Section 1</p>
+    <h2 class="category-title" style="margin-bottom:28px;">Business Consulting</h2>
     <div class="roadmap-teaser-grid">
-      <div class="roadmap-teaser-card">
+      <a href="services.html#roadmap-consulting" class="roadmap-teaser-card" style="text-decoration:none; display:block;">
+        <p class="roadmap-phase-label">Phase 1</p>
+        <h3>Foundation</h3>
+        <p>I'm right there helping you build — real systems and support, done right.</p>
+      </a>
+      <a href="services.html#roadmap-consulting" class="roadmap-teaser-card" style="text-decoration:none; display:block;">
+        <p class="roadmap-phase-label">Phase 2</p>
+        <h3>Growth</h3>
+        <p>I'm training your team and building toward autonomy, one process at a time.</p>
+      </a>
+      <a href="services.html#roadmap-consulting" class="roadmap-teaser-card" style="text-decoration:none; display:block;">
+        <p class="roadmap-phase-label">Phase 3</p>
+        <h3>Authority</h3>
+        <p>I hand it off. You're operating in complete autonomy — with a team behind you.</p>
+      </a>
+    </div>
+
+    <p class="category-eyebrow" style="color: var(--gold); margin-top:56px; margin-bottom:6px;">Section 2</p>
+    <h2 class="category-title" style="margin-bottom:28px;">Digital Media</h2>
+    <div class="roadmap-teaser-grid">
+      <a href="services.html#roadmap-digital" class="roadmap-teaser-card" style="text-decoration:none; display:block;">
         <p class="roadmap-phase-label">Phase 1</p>
         <h3>Foundation</h3>
         <p>You're building something solid — a real digital presence, done right.</p>
-      </div>
-      <div class="roadmap-teaser-card">
+      </a>
+      <a href="services.html#roadmap-digital" class="roadmap-teaser-card" style="text-decoration:none; display:block;">
         <p class="roadmap-phase-label">Phase 2</p>
         <h3>Growth</h3>
         <p>You're increasing visibility and momentum, month over month.</p>
-      </div>
-      <div class="roadmap-teaser-card">
+      </a>
+      <a href="services.html#roadmap-digital" class="roadmap-teaser-card" style="text-decoration:none; display:block;">
         <p class="roadmap-phase-label">Phase 3</p>
         <h3>Authority</h3>
         <p>You're becoming the obvious choice in your market.</p>
-      </div>
+      </a>
     </div>
 
-    <a href="services.html#roadmap" class="roadmap-teaser-link">See What's Included In Each Phase &nbsp;→</a>
+    <a href="services.html" class="roadmap-teaser-link">See What's Included In Each Phase &nbsp;→</a>
   </div>
 </section>
 <section class="contact-section" id="contact">
