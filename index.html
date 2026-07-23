@@ -1541,17 +1541,17 @@
       <a href="services.html#roadmap-consulting" class="roadmap-teaser-card" style="text-decoration:none; display:block;">
         <p class="roadmap-phase-label">Phase 1</p>
         <h3>Foundation</h3>
-        <p>I'm right there helping you build — real systems and support, done right.</p>
+        <p>We're right there helping you build — real systems and support, done right.</p>
       </a>
       <a href="services.html#roadmap-consulting" class="roadmap-teaser-card" style="text-decoration:none; display:block;">
         <p class="roadmap-phase-label">Phase 2</p>
         <h3>Growth</h3>
-        <p>I'm training your team and building toward autonomy, one process at a time.</p>
+        <p>We're training your team and building toward autonomy, one process at a time.</p>
       </a>
       <a href="services.html#roadmap-consulting" class="roadmap-teaser-card" style="text-decoration:none; display:block;">
         <p class="roadmap-phase-label">Phase 3</p>
         <h3>Authority</h3>
-        <p>I hand it off. You're operating in complete autonomy — with a team behind you.</p>
+        <p>We hand it off. You're operating in complete autonomy — with a team behind you.</p>
       </a>
     </div>
 
@@ -1584,29 +1584,14 @@
   <a href="tel:8178608989" class="cta-btn">Call for Consultation &nbsp;·&nbsp; 817-860-8989</a>
 </section>
 <section class="contact-section" id="contact">
-  <div class="contact-inner">
+  <div class="contact-inner" style="text-align:center;">
     <p class="block-eyebrow" style="color:var(--teal);">Get In Touch</p>
-    <h2 class="block-title" style="margin-bottom:12px;">Send Me A Message</h2>
-    <p class="category-sub">Tell me about your business and what you need — I'll get back to you personally.</p>
+    <h2 class="block-title" style="margin-bottom:12px;">Send Us A Message</h2>
+    <p class="category-sub" style="margin: 0 auto 32px;">Tell us about your business and what you need — we'll get back to you personally.</p>
 
-    <form class="contact-form" id="mmmContactForm" action="https://formspree.io/f/susy@megamissionmedia.com" method="POST">
-      <div>
-        <label for="cf-name">Name</label>
-        <input type="text" id="cf-name" name="name" required>
-      </div>
-      <div>
-        <label for="cf-email">Email</label>
-        <input type="email" id="cf-email" name="email" required>
-      </div>
-      <div>
-        <label for="cf-message">Message</label>
-        <textarea id="cf-message" name="message" required></textarea>
-      </div>
-      <input type="text" name="_gotcha" style="display:none">
-      <button type="submit" class="contact-submit">Send Message</button>
-      <p class="form-status" id="formStatus"></p>
-    </form>
-    <p class="contact-note">Prefer to talk? Call &nbsp;<a href="tel:8178608989" style="color:var(--gold);">817-860-8989</a></p>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLScxJBetd6EXeXlIIFZbUtDFZ5dLuFNbcQvgJiFAOaZbYncEOA/viewform?usp=header" target="_blank" rel="noopener" class="contact-submit" style="display:inline-block; text-decoration:none;">Send Us A Message</a>
+
+    <p class="contact-note" style="margin-top:24px;">Prefer to talk? Call &nbsp;<a href="tel:8178608989" style="color:var(--gold);">817-860-8989</a></p>
   </div>
 </section>
 <div class="footer-simple">
@@ -1633,32 +1618,6 @@
         hamburger.classList.remove('open');
         mobileNav.classList.remove('open');
         document.body.style.overflow = '';
-      });
-    });
-  }
-
-  const mmmForm = document.getElementById('mmmContactForm');
-  const formStatus = document.getElementById('formStatus');
-  if (mmmForm) {
-    mmmForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const data = new FormData(mmmForm);
-      fetch(mmmForm.action, {
-        method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      }).then(response => {
-        if (response.ok) {
-          formStatus.textContent = "Thanks — your message is on its way. I'll be in touch soon.";
-          formStatus.className = 'form-status success';
-          mmmForm.reset();
-        } else {
-          formStatus.textContent = "Something went wrong. Please call 817-860-8989 instead.";
-          formStatus.className = 'form-status error';
-        }
-      }).catch(() => {
-        formStatus.textContent = "Something went wrong. Please call 817-860-8989 instead.";
-        formStatus.className = 'form-status error';
       });
     });
   }
