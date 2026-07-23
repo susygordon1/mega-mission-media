@@ -1461,17 +1461,24 @@
 
   /* ── SIMPLIFIED FOOTER ── */
   .footer-simple {
-    padding: 32px 48px 20px;
+    padding: 40px 48px 24px;
     border-top: 1px solid var(--border);
     text-align: center;
   }
   .footer-powered {
     font-family: 'Orbitron', sans-serif;
-    font-size: 0.75rem;
+    font-size: 1rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--gold-dim);
-    margin-bottom: 10px;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .footer-copyright {
+    font-size: 0.85rem;
+    color: #999;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: center;
   }
 
 </style>
@@ -1518,10 +1525,10 @@
   </div>
 </section>
 <section class="who-section">
-  <div class="who-inner" style="grid-template-columns: 1fr; max-width: 900px;">
-    <div class="who-left">
+  <div class="who-inner" style="grid-template-columns: 1fr; max-width: 900px; text-align:center; margin-left:auto; margin-right:auto;">
+    <div class="who-left" style="margin: 0 auto;">
       <p class="block-eyebrow">Mega Mission — What We Do</p>
-      <p class="roadmap-lead" style="font-family:'Orbitron',sans-serif; font-style:normal; color:var(--gold); font-size:1.3rem; letter-spacing:0.03em; margin-bottom:0;">Three Phases. One Mission.</p>
+      <p class="roadmap-lead" style="font-family:'Orbitron',sans-serif; font-style:normal; color:var(--gold); font-size:clamp(1.8rem, 4vw, 2.6rem); letter-spacing:0.03em; line-height:1.15; margin-bottom:0;">Three Phases. Two Lanes. One Mission.</p>
     </div>
   </div>
 </section>
@@ -1571,6 +1578,11 @@
     <a href="services.html" class="roadmap-teaser-link">See What's Included In Each Phase &nbsp;→</a>
   </div>
 </section>
+<section class="cta-section">
+  <h2>READY TO PUT YOUR<br>BUSINESS OUT THERE?</h2>
+  <p>Full-service. Faith-driven. Fort Worth, Texas.</p>
+  <a href="tel:8178608989" class="cta-btn">Call for Consultation &nbsp;·&nbsp; 817-860-8989</a>
+</section>
 <section class="contact-section" id="contact">
   <div class="contact-inner">
     <p class="block-eyebrow" style="color:var(--teal);">Get In Touch</p>
@@ -1597,14 +1609,9 @@
     <p class="contact-note">Prefer to talk? Call &nbsp;<a href="tel:8178608989" style="color:var(--gold);">817-860-8989</a></p>
   </div>
 </section>
-<section class="cta-section">
-  <h2>READY TO PUT YOUR<br>BUSINESS OUT THERE?</h2>
-  <p>One person. Full-service. Faith-driven. Fort Worth, Texas.</p>
-  <a href="tel:8178608989" class="cta-btn">Call for Consultation &nbsp;·&nbsp; 817-860-8989</a>
-</section>
 <div class="footer-simple">
   <p class="footer-powered">Powered by Mega Mission Media</p>
-  <p style="font-size:0.7rem; color:#333; letter-spacing:0.08em; text-transform:uppercase;">© 2026 Mega Mission Media &nbsp;·&nbsp; Fort Worth, TX &nbsp;·&nbsp; Built in a Car. Born in Obedience.</p>
+  <p class="footer-copyright">© 2026 Mega Mission Media &nbsp;·&nbsp; Fort Worth, TX &nbsp;·&nbsp; Built in a Car. Born in Obedience.</p>
 </div>
 <script>
   const hamburger = document.getElementById('hamburger');
